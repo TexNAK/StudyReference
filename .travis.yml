@@ -1,0 +1,18 @@
+sudo: required
+dist: trusty
+before_install:
+- sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-fonts-recommended
+  texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended
+script:
+- cd src/ && latexmk -f -pdf -xelatex -shell-escape -interaction=nonstopmode -halt-on-error
+  main.tex
+- cp src/main.pdf StudyReference.pdf
+deploy:
+  provider: releases
+  api_key:
+    secure: NY47P+oBHs2Hp1UyjwS6w4QmlTZjptMYnyjmtLh7wLVMQIPyOG4Bvz/o15JNOcE/fnq2h/zpMN6KnH6IVnpPJmcF1ZYe5+KYIkZ/lhgDDMlW+dt+VUdp9SxERCRJNC/4MXF5m9/9/J2BCgdbtb/UnAX060eX+7XMdn6ONWGD+iDYwhFd86L0vuhlFnCpZCvqgQ/y24Pty5VMTWKSzAKkrAVsARJUw9rujShqmG9Ikt5nMr9JTqglIkjzBN77Dx+qfII43u2deNVGjI6+FxbcHGpsG0DjKwrrmNQFS+uDc9tAAknvdlYFvI4zhnElSeXnlbkB3/7x8EkR8u3yCrI8Uc12Sk9xfdmAtY0a3O/WcuSdZHaeCfwZWKRUjTvdjUbILnxe0EjnItWDBRteHYZgl6XOG6LAkMkoPOD8fnX/gjRCrwXyz1zH9dxrGWM0UQsX/7WCcA9q7W23+2CGtXHuTXkHoa1+TH0qRxR/sexff00igdI82NFw/TUV0CQBUiDEZ9qYBy1DI+pYpM/AITCC17US44rfLfh3ZQIoEZU2S72/lj7VQsKZ3j2t22jxp4z9gnZloOM/vu4rcWLFerRUrGtmQS3EPqe1O4g6NnnU4H6B+iTYS4PlLWJ06IZW8W7DEDZekww8e97zQcq0nvXmNnRbTWBbdIjt1/i48UNVT4M=
+  file: StudyReference.pdf
+  prerelease: true
+  on:
+    repo: TexNAK/StudyReference
+    branch: "master"
