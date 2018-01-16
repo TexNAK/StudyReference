@@ -28,4 +28,20 @@
                 
             \paragraph{Quellprogramm}
                 Quellprogramm\footnote{Auch: Sourcecode} ist ein Programm in einer Hochsprache.
+                
+    \section{Auswertungsregeln}
+        \paragraph{Syntax}
+            Die Syntax einer Programmiersprache legt zulässige Elemente und Struktur fest.
+            
+        \paragraph{Semantik}
+            Die Semantik einer Programmiersprache legt die Bedeutung von syntaktisch korrekten Ausdrücken fest. Die Semantik funktionaler Programmiersprachen orientiert sich an der Semantik der Mathematik.
+            
+        \paragraph{Ersetzungen}
+            Um die Bedeutung eines Ausdrucks zu bestimmen, werden nacheinander semantisch äquivalente Umformungen mit dem \emph{Ersetzungsmodell für Funktionsanwendungen} durchgeführt. Die Reihenfolge der Auswertung von Teilausdrücken in funktionalen Sprachen hat dabei keine Auswirkung auf das Endergebnis.
+            
+        \paragraph{Self Evaluating Expressions}
+            \emph{Self Evaluating Expressions} sind Ausdrücke, die zu sich selbst ausgewertet werden. In Racket gehören Zahlen zu den \emph{Self Evaluating Expressions}. Die Auswertung eines Ausdrucks ist beendet, wenn eine \emph{Self Evaluating Expressions} erreicht wurde.
+            
+        \paragraph{Funktionsaufruf}
+            Bei strikter Auswertung werden erst alle Argumente eines Funktionsaufrufs berechnet. Diese Verfahren kommt bei Racket zum Einsatz. Diesem Verfahren steht die lazy Auswertung gegenüber, die zum Beispiel in Haskel verwendet wird, bei dem auch die Argumente erst berechnet werden, wenn sie benötigt werden.         
 \end{document}
