@@ -14,25 +14,28 @@ class REMatcher(object):
     def group(self,i):
         return self.rematch.group(i)
 
-def get_text(file):
-    res = subprocess.run(['detex', file], stdout=subprocess.PIPE)
-    return res.stdout.decode('utf-8')
-
-def count_words(text):
-    return len(text.split())
 
 def get_texcount_output(dir, file):
     res = subprocess.run(['texcount', '-freq', '-merge', '-stat', '-dir=' + dir, file], stdout=subprocess.PIPE)
     return res.stdout.decode('utf-8')
 
+
 def parse_preamble(preamble):
-    preamble = preamble.replace('\n', '\n\n')
-    print('\n' + preamble + '\n')
+    print('### Overall statistics')
+    print('|   | Count |')
+    print('| - | ----- |')
+
+    for line in preamble.splitlines()[2:]:
+        parts = line.split(": ")
+        print('| ' + parts[0] + ' | ' + parts[1] + ' |')
+
+    print('\n')
+
 
 def parse_headers(headers):
     indent_unit = "&nbsp;&nbsp;&nbsp;&nbsp;"
     r = re.compile('  (\\d+)\\+\\d+\\+\\d+ \\(\\d+/(\\d+)/(\\d+)/(\\d+)\\) (\\w+): (.*)', re.DOTALL)
-    print('\n')
+    print('### Statistics grouped by header')
     print("| Header | Word count | Floats | Math (inline) | Math (displayed) |")
     print("| - | - | - | - | - |")
     for line in headers.splitlines():
@@ -57,13 +60,16 @@ def parse_headers(headers):
     print('\n')
 
 
-def parse_word_stats(word_stats):
-    # print("WORD_STATS")
-    return None
-
 def parse_word_frequency(word_frequency):
-    # print("WORD_FREQ")
-    return None
+    print('### Top 10 words')
+    print('|   | Count |')
+    print('| - | ----- |')
+    for word in word_frequency.splitlines()[:10]:
+        parts = word.split(": ")
+        print('| ' + parts[0] + ' | ' + parts[1] + '|')
+
+    print('\n')
+
 
 def process_texcount_output(output):
     m = REMatcher(output)
@@ -75,7 +81,7 @@ def process_texcount_output(output):
         # Group 4: Word frequency table
         parse_preamble(m.group(1))
         parse_headers(m.group(2))
-        parse_word_stats(m.group(3))
+        # parse_word_stats(m.group(3))
         parse_word_frequency(m.group(4))
 
 
