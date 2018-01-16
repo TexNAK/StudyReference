@@ -1,0 +1,114 @@
+\documentclass[a4paper]{report}
+% \documentclass[a4paper]{book}
+
+% Imports
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage{epigraph}
+\usepackage{subfiles}
+\usepackage[acronym,toc]{glossaries}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{siunitx}
+\usepackage{tkz-graph}
+
+
+\usetikzlibrary{positioning}
+
+% Title page
+\title{Angewandte Informatik \\
+    \noindent\rule[0.25ex]{\linewidth}{0.5pt}
+    \large Das einzig wahre Informatik-Studium!
+}
+\author{Til Blechschmidt}
+\author{
+  Blechschmidt, Til\\
+  \texttt{til@blechschmidt.de}
+  \and
+  Peeters, Noah\\
+  \texttt{noah.peeters@icloud.com}
+}
+
+% Numbering
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+
+% Quote styling
+\setlength\epigraphwidth{.8\textwidth}
+\setlength\epigraphrule{0pt}
+
+
+\begin{document}
+    % Title page
+	\thispagestyle{fancy}
+	\maketitle
+
+    % Abstract
+ 	\begin{abstract}
+         Das folgende Dokument fasst alle Inhalte zusammen, die die Autoren im Laufe des Studiengangs Angewandte Informatik sowie in zusätzlichen Seminaren an der Nordakademie vermittelt bekommen haben.
+ 	\end{abstract}
+ 	\newpage
+
+	% TOC
+	\tableofcontents
+
+	% --- Vorlesungsinhalte ---
+	\part{Diskrete Mathematik}
+	    \chapter{Boolesche Algebra}
+	        \subfile{DiskreteMathematik/BoolescheAlgebra}
+	    \chapter{Formale Grundlagen}
+	        \subfile{DiskreteMathematik/FormaleGrundlagen}
+	        
+    \part{Informatik}
+        \chapter{Kursübergreifenden Grundlagen}
+            \subfile{Informatik/Grundlagen}
+        \chapter{Technische Grundlagen}
+            \subfile{Informatik/TechnischeGrundlagen}
+        \chapter{Einführung in die Programmierung}
+            \subfile{Informatik/EinfuehrungProgrammierung}
+        \chapter{Informatik und Gesellschaft}
+            \subfile{Informatik/InformatikGesellschaft}
+	        
+    \part{Wirtschaft}
+        \chapter{Allgemeine Betriebswirtschaftslehre}
+            \subfile{Wirtschaft/ABWL}
+	        
+    \part{Sprachen}
+        \chapter{Englisch}
+            \subfile{Sprachen/Englisch}
+	        
+    % --- Seminare ---
+    \part{Seminarwesen}
+        \chapter{Wissenschaftliches Arbeiten}
+            \subfile{Seminare/WissenschaftlichesArbeiten}
+        \chapter{Rhetorik I}
+            \subfile{Seminare/RhetorikI}
+
+    
+    \clearpage
+    \part{Appendix}
+    
+    	\clearpage
+    	\printglossary[type=\acronymtype]
+        \printglossary
+        
+        \clearpage
+        \bibliographystyle{unsrt}
+        \bibliography{references}
+        
+        \listoffigures
+        
+        \clearpage
+        \chapter{Signifikante Meilensteine}
+        
+            \epigraph{\itshape Ich habe mich gerade daran gewöhnt, dass man Computer mit C schreibt ... Ich hasse Sprachen -.-}{---Noah Peeters}
+            
+            \epigraph{\itshape Das macht doch alles keinen Sinn mit C und K im Deutschen!}{---Noah Peeters}
+            
+            \epigraph{\itshape Das epigraph Package ist perfekt!}{---Til Blechschmidt}
+            
+\end{document}

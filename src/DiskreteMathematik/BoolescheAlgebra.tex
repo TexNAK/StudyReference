@@ -1,0 +1,255 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+    Die boolesche Algebra beschäftigt sich mit der Mathematik hinter den beiden Wahrheitswerten $wahr$ und $falsch$.
+    \clearpage
+
+    \section{Definitionen}
+            \paragraph{Wahrheitswerte}
+                Es gibt zwei Wahrheitswerte: 0 und 1. Sie bilden die Grundbausteine der booleschen Algebra.
+                
+            \paragraph{Aussage}
+                Alle Wahrheitswerte sowie Verknüpfungen von Wahrheitswerten sind Aussagen\footnote{Auch: Formel, aussagenlogische Aussage, aussagenlogische Formel, boolescher Ausdruck oder boolesche Formel}. Wahrheitswerte werden auch als Elementaraussagen bezeichnet.
+                
+            \paragraph{Logische Variablen}
+                Logische Variablen sind Platzhalter für Aussagen.
+                
+            \paragraph{Signatur}
+                Die Signatur $\Sigma$ ist die Menge aller logischen Variablen.
+                
+            \paragraph{Syntax}
+                Die Syntax von Aussagen besteht aus Wahrheitswerten, logischen Variablen, Klammern und Junktoren.
+            \paragraph{Semantik}
+                Die Semantik definiert mithilfe von Präzedensregeln wie die Aussage zu interpretieren ist und ordnet ihr einen Wahrheitswert zu.
+                
+    \section{Junktoren}\label{section:DiskreteMathematik:BoolscheAlgebra:Junktoren}
+        \paragraph{Negation ($\neg$)}
+            Die Negation kehrt den Wahrheitswert um.
+            
+            \begin{center}
+                \begin{tabular}{ | c | c | c | }
+                    \hline
+                    $A$ & $B$  & $\neg A$ \\\hline
+                    f & f & w \\
+                    f & w & w \\
+                    w & f & f \\
+                    w & w & f \\\hline
+                \end{tabular}
+            \end{center}
+            
+        \paragraph{Konjunktion ($\wedge$)}
+            Die Konjunktion\footnote{Auch: logisches und} ist genau dann wahr, wenn beide Operanden wahr sind.
+            
+            \begin{center}
+                \begin{tabular}{ | c | c | c | }
+                    \hline
+                    $A$ & $B$  & $A \wedge B$ \\\hline
+                    f & f & f \\
+                    f & w & f \\
+                    w & f & f \\
+                    w & w & w \\\hline
+                \end{tabular}
+            \end{center}
+            
+        \paragraph{Disjunktion ($\vee$)}
+            Die Disjunktion\footnote{Auch: logisches oder} ist genau dann wahr, wenn mindestens einer der Operanden wahr ist.
+            
+            \begin{center}
+                \begin{tabular}{ | c | c | c | }
+                    \hline
+                    $A$ & $B$  & $A \vee B$ \\\hline
+                    f & f & f \\
+                    f & w & w \\
+                    w & f & w \\
+                    w & w & w \\\hline
+                \end{tabular}
+            \end{center}
+            
+        \paragraph{Implikation ($\rightarrow$)}
+            Die Implikation ist genau dann falsch, wenn der erste Operand wahr und der zweite falsch ist.
+            
+			\begin{equation}
+                A \rightarrow B \leftrightarrow \neg A \vee B
+            \end{equation}
+            
+            \begin{center}
+                \begin{tabular}{ | c | c | c | }
+                    \hline
+                    $A$ & $B$  & $A \rightarrow B$ \\\hline
+                    f & f & w \\
+                    f & w & w \\
+                    w & f & f \\
+                    w & w & w \\\hline
+                \end{tabular}
+            \end{center}
+            
+            Ein häufig gewähltes Beispiel zur Veranschaulichung der Implikation ist die Beziehung zwischen Regen und einer nassen Straße. Wenn es nicht regnet kann die Straße sowohl nass als auch trocken sein. Wenn es aber regnet, dann muss die Straße nass sein.
+            
+        \paragraph{Äquivalenz ($\leftrightarrow$)}
+            Die Äquivalenz ist genau dann wahr, wenn beide Operanden den gleichen Wahrheitswert haben.
+            
+            \begin{center}
+                \begin{tabular}{ | c | c | c | }
+                    \hline
+                    $A$ & $B$  & $A \leftrightarrow B$ \\\hline
+                    f & f & w \\
+                    f & w & f \\
+                    w & f & f \\
+                    w & w & w \\\hline
+                \end{tabular}
+            \end{center}
+                
+                
+    \section{Eigenschaften}
+        Gegeben sei eine Aussage $F$ mit $n$ Variablen.
+        
+        \paragraph{Wertetabelle}
+            Eine Wertetabelle enthält verschiedene Belegungen einer oder mehrerer Aussage mit den zugeordneten Wahrheitswerten.
+            
+        \paragraph{Belegung}
+			Eine Belegung ist ein n-Tupel aus Wahrheitswerten und entspricht einer Zeile in einer Wertetabelle. Es gibt genau $2^n$ Belegungen.
+            
+        
+        \paragraph{Modell}
+            Ein Modell von $F$ ist eine Belegung, die $F$ wahr macht. Wenn F mindestens ein Modell hat ist sie erfüllbar
+            
+        \paragraph{Tautologie}
+            F ist eine Tautologie, wenn jede Belegung ein Modell ist.
+            
+        \paragraph{Antinomie}
+            F ist eine Antinomie\footnote{Auch: Kontradiktion}, wenn \emph{keine} Belegung ein Modell ist.
+                
+    \section[Metaebene]{Operatoren der Metaebene}
+        Innerhalb einer Aussage kann man die Relation zweier Teilausdrücke durch die zuvor in Abschnitt \ref{section:DiskreteMathematik:BoolscheAlgebra:Junktoren} beschriebenen Junktoren ausdrücken. Nun ist es aber auch möglich das Verhalten zweier Ausdrücke auf der Metaebene zu definieren. Im Gegensatz zu den Junktoren der Implikation und Äquivalenz erzeugen die nachfolgenden Operatoren keinen neuen Ausdruck sondern stellen lediglich ein Verhältnis zweier Ausdrücke auf der zuvor genannten Metaebene dar. Auf dieser Ebene gibt es folgende Operatoren:
+        
+        \paragraph{Semantische Implikation ($\models$)} Die semantische Implikation beschreibt ein Verhältnis zweier Aussagen, wo jede Belegung welche die erste Aussage wahr macht auch die zweite Aussage wahr ist. Dies muss nicht umgekehrt anwendbar sein.
+        
+        \paragraph{Semantische Äquivalenz ($\equiv$)} Die semantische Äquivalenz beschreibt eine Relation zweier Ausdrücke, wo beide Aussagen für die gleiche Belegung den gleichen Wahrheitswert haben.
+                
+    \section{Technische Notation}
+        Zusätzlich zu der klassischen Notation wie sie zuvor benutzt wurde gibt es noch die technische Notation. Sie unterscheidet sich in einer Reihe von Operatoren. In den nachfolgenden Abschnitten wird ausschließlich diese Form der Notation genutzt. In Tabelle \ref{table:DiskreteMathematik:BoolscheAlgebra:TechnischeNotation} sind die Unterschiede zur klassischen Notation gelistet
+        \begin{table}
+            \centering
+            \begin{tabular}{c c}
+                Klassische Notation & Technische Notation\\
+                \hline
+                \noalign{\smallskip}
+                $A \land B$ & $A \cdot B$ \\
+                \noalign{\smallskip}
+                $A \lor B$ & $A + B$ \\
+                \noalign{\smallskip}
+                $\lnot A$ & $\bar{A}$
+            \end{tabular}
+            \caption{Unterschiede der technischen Notation}
+            \label{table:DiskreteMathematik:BoolscheAlgebra:TechnischeNotation}
+        \end{table}
+            
+    \section{Äquivalenzen und Implikationen}
+        
+        \paragraph{Neutralität}
+            \begin{subequations}
+                \begin{align}
+                    A \cdot 1 &\equiv A\\
+                    A + 0 &\equiv A
+                \end{align}
+            \end{subequations}
+        
+        \paragraph{Inversion}
+            \begin{subequations}
+                \begin{align}
+                    A\bar{A} &\equiv 0\\
+                    A + \bar{A} &\equiv 1
+                \end{align}
+            \end{subequations}
+        
+        \paragraph{Elimination}
+            \begin{subequations}
+                \begin{align}
+                    A \cdot 0 &\equiv 0\\
+                    A + 1 &\equiv 1
+                \end{align}
+            \end{subequations}
+        
+        \paragraph{Idempotenzgesetze}
+            \begin{subequations}
+                \begin{align}
+                    AA &\equiv A\\
+                    A + A &\equiv A
+                \end{align}
+            \end{subequations}
+        
+        \paragraph{Kommutativgesetze}
+            \begin{subequations}
+                \begin{align}
+                    AB &\equiv BA\\
+                    A + B &\equiv B + A
+                \end{align}
+            \end{subequations}
+        
+        \paragraph{Assoziativgesetze}
+            \begin{subequations}
+                \begin{align}
+                    A (BC) &\equiv (AB) C\\
+                    A + (B + C) &\equiv (A + B) + C
+                \end{align}
+            \end{subequations}
+        
+        \paragraph{Absorptionsgesetze}
+            \begin{subequations}
+                \begin{align}
+                    A (A + B) &\equiv A\\
+                    A + AB &\equiv A
+                \end{align}
+            \end{subequations}
+        
+        \paragraph{Distributivgesetze}
+            \begin{subequations}
+                \begin{align}
+                    A (BC) &\equiv (AB) C\\
+                    A + BC &\equiv (A + B)(A + C)
+                \end{align}
+            \end{subequations}
+        
+        \paragraph{Doppelte Negation}
+            \begin{align}
+                \bar{\bar{A}} &\equiv A
+            \end{align}
+        
+        \paragraph{De Morgansche Regeln}
+            \begin{subequations}
+                \begin{align}
+                    \overline{AB} &\equiv \bar{A} + \bar{B}\\
+                    \overline{A + B} &\equiv \bar{A}\bar{B}
+                \end{align}
+            \end{subequations}
+        
+        \paragraph{Kontraposition}
+            \begin{align}
+                (A \rightarrow B) &\equiv (\bar{B} \rightarrow \bar{A})
+            \end{align}
+        
+        \paragraph{Auflösung Implikation}
+            \begin{equation}
+                (A \rightarrow B) \equiv (\bar{A} + B)
+            \end{equation}
+        
+        \paragraph{Auflösung Äquivalenz}
+            \begin{equation}
+                (A \leftrightarrow B) \equiv (AB + \bar{A}\bar{B})
+            \end{equation}
+        
+        \paragraph{modus ponens}
+            \begin{equation}
+                ((A \rightarrow B) \cdot A) \models B
+            \end{equation}
+        
+        \paragraph{modus tollens}
+            \begin{equation}
+                ((A \rightarrow B) \cdot \bar{B}) \models \bar{A}
+            \end{equation}
+        
+        \paragraph{Transitivität (modus barbara)}
+            \begin{equation}
+                (A \rightarrow B) \cdot (B \rightarrow C) \models (A \rightarrow C)
+            \end{equation}
+\end{document}

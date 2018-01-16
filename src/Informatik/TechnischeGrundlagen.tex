@@ -1,0 +1,91 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+    Um einen Computer programmieren zu können ist es unerlässlich zu verstehen, wie er funktioniert. In diesem Kurs werden dafür die technischen Grundlagen in den beiden Bereich Hardware und Software gelegt.
+    \clearpage
+    
+    \section{Mooresches Gesetz}
+        Das Mooresches Gesetz besagt, dass alle 18 Monate eine Verdoppelung der Anzahl der Transistoren in einem Computer erfolgt. Bis heute hat sich dieses Gesetz annähernd bewahrheitet. Zu beachten ist jedoch, dass heute die Bemühungen weg von Leistungssteigerung und hin zu Energieeffizienz gehen, sodass zu erwarten ist, dass sich der Zeitraum verlängern wird.
+
+    \section{Daten in einem Computers}
+        \subsection{Bit}
+            Bit ist eine Abkürzung für \emph{binary digit} und ist die kleinste Dateneinheit eines Computers. Es gibt nur zwei mögliche Werte: \emph{an/wahr/1} und aus/falsch/0.
+            
+        \subsection{Bitfolgen}
+            Da zwei Werte für die meisten Fälle nicht ausreichend sind, arbeitet man mit Bitfolgen, also mehreren aufeinander folgende Bits. Dabei kann eine Bitfolge mit $n$ Bits genau $2^n$ verschiedene Zustände haben.
+        
+        \subsection{Byte}
+            Um Bitfolgen im Sprachgebrauch einfacher nutzen zu können, gibt es Bytes, die eine Bitfolge der Länge $8$ sind.
+
+    \section{Darstellung von Informationen}
+        \label{section:Informatik:TechnischeGrundlagen:DarstellungVonInformationen}
+        
+        Um Informationen darzustellen braucht man eine eindeutige Abbildung von $A$ zu $B$:
+        
+        \begin{equation}
+            f\colon A \rightarrow B
+        \end{equation}
+        
+        Die Abbildung von Informationen auf für den Computer verständliche Daten nennt man \emph{Codierung}.
+        
+        \subsection{logische Werte}
+            Da es nur genau zwei logische Wahrheitswerte gibt lassen sich diese einfach mit einem Bit Darstellen. Dabei hat man sich, wie auch in der booleschen Algebra, darauf geeinigt, dass eine $0$ $falsch$ und eine $1$ $wahr$ repräsentiert. Damit hat man für logische Werte folgende \emph{Codierung}:
+            
+            \begin{subequations}
+                \begin{align}
+                    wahr \rightarrow 1 \\
+                    falsch \rightarrow 0
+                \end{align}
+            \end{subequations}
+            
+        \subsection{Texte}
+            Historisch sind für verschiedene Sprachen und Alphabete verschiedene \emph{Textcodierungen} entstanden. Die wichtigsten sollen nachfolgend aufgezeigt werden.
+            
+            \paragraph{ASCII}
+                Der \emph{American Standard Code for Information Interchange} ordnet jedem Zeichen der englischen Sprache ein eindeutige Zahl, die kleiner als 127 ist zu. So lassen sich alle Zahlen mit sieben Bits darstellen. Außerdem wird ein achtes Bit als ein Kontrollbit eingesetzt. Damit ist ein random access möglich, da jedes Zeichen genau ein Byte lang ist. Die \emph{ASCII-Codierung} sieht folgendermaßen aus:
+                
+                \begin{center}
+                \begin{tabular}{ccc}
+                    Decimal & Binary & Buchstabe \\\hline
+                    ... & ... & ... \\
+                    33 & 00100001 & ! \\
+                    ... & ... & ... \\
+                    65 & 01000001 & A \\
+                    66 & 01000010 & B \\
+                    67 & 01000011 & C \\
+                    ... & ... & ... \\
+                    97 & 01100001 & a \\
+                    98 & 01100010 & b \\
+                    99 & 01100011 & c \\
+                    ... & ... & ... \\
+                    122 & 01111010 & z \\
+                    ... & ... & ... \\
+                \end{tabular}
+                \end{center}
+            
+            \paragraph{Unicode}
+                Da \emph{ASCII} und andere auch in dieser Zeit entstandene Codierungen für Zeichenketten immer nur für ein oder wenige Alphabete ausgelegt waren, wurde es schwierig Texte im aufkommenden Internet auszutauschen. Deshalb ist im Internet eine Universelle Codierung, der \emph{Unicode} entstanden. Unicode hat sich durchgesetzt, da es unabhängig vom Alphabet eingesetzt wurde und zu $100\%$  kompatibel zu ASCII ist, sodass alle bestehenden ASCII Texte automatisch auch Unicode Texte waren. Um dies zu erreichen haben die einzelnen Buchstaben unterschiedliche Längen. So benötigen alle Buchstaben des englischen Alphabetes weiterhin acht Bit während zum Beispiel das ä des deutschen Alphabetes sechzehn Bit. Bei Unicode ist die Länge eines Zeichens auf vier Bytes beschränkt.
+            
+        \subsection{Bilder}
+            Es gibt zwei verschiedene Arten von Bildern: Raster- und Vektorgrafiken.
+            
+            \paragraph{Rastergrafiken}
+                Rastergraphiken arbeiten mit einem Raster einer bestimmten Auflösung. Jedem Punkt oder Pixel in diesem Raster wird dann eine Farbe zugeordnet. Wie das gemacht wird hängt vom Bildformat ab.
+                
+                \subparagraph{Bitmaps}
+                Das einfachste Verfahren ist von Bitmaps. Hier hat jedes Pixel ein Byte für Rot, eins für Grün und eins für Blau. Damit kann jedes Pixel eine von $2^(8+8+8) = 2^24 = 16,777,216$ unterschiedlichen Farben haben und ist damit für das menschliche Auge ausreichend genug. Deshalb wird eine Farbtiefe mit 24 Bit als TrueColor bezeichnet. Die Gesamtgröße eines Bildes ist damit
+                
+                \begin{equation}
+                    Width \cdot Heigth \cdot 3Byte
+                \end{equation}
+                
+                \subparagraph{Gifs}
+                Ein anderes Verfahren wird von Gifs verwendet. Diese haben eine Farbpalette mit bis zu 265 Farben, die jeweils $24$ Bit groß sind. Für die einzelnen Pixel braucht man dann nur ein Byte um die Nummer der Farbe in der Farbpalette anzugeben.
+                
+                \subparagraph{JPEGs}
+                JPEGs verwenden eine ganz anderes Verfahren, bei dem immer $4 \times 4$ Pixel Blöcke zusammengefasst werden und mit einer Mathematischen Methode wieder ein Großteil der ursprünglichen Informationen hergestllt werden kann. Dieses Verfahren eignet sich besonders bei Fotos.
+            
+            \paragraph{Vektorgrafiken}
+                Vektorgrafiken speichern das Bild mithilfe von primitiven Objekten wie Linien und Kurven. Die eigentlichen Bildinformationen, die auf gerasterten Bildschirmen angezeigt werden können, werden erst berechnet, wenn die Auflößung bekannt ist. Auf diese Weise kann verlustfrei an Bilder gezoomt werden. Vektorgrafiken eignet sich damit sehr für am Computer erstellte Bilder.
+            
+\end{document}
