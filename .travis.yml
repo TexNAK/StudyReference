@@ -10,6 +10,7 @@ addons:
       - latexmk
       - texlive-xetex
       - texlive-lang-german
+      - texlive-science
 script:
 - cd src/ && latexmk -f -pdf -xelatex -shell-escape -interaction=nonstopmode -halt-on-error main.tex
 - cp src/main.pdf StudyReference.pdf
