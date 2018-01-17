@@ -4,8 +4,7 @@ addons:
     packages:
       - texlive-full
 script:
-- cd src/ && latexmk -f -pdf -xelatex -shell-escape -interaction=nonstopmode -halt-on-error main.tex
-- cp src/main.pdf StudyReference.pdf
+  - cd src/ && latexmk -f -pdf -xelatex -shell-escape -interaction=nonstopmode -halt-on-error main.tex && cp main.pdf ../StudyReference.pdf
 deploy:
   provider: releases
   api_key:
