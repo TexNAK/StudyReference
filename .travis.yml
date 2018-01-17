@@ -7,9 +7,9 @@ cache:
   directories:
     - docker
 
-before_install:
-  - test ! -e docker/texlive-full.tar.gz && docker pull blang/latex
-  - test ! -e docker/texlive-full.tar.gz && docker save blang/latex | gzip > docker/texlive-full.tar.gz
+install:
+  - test ! -e docker/texlive-full.tar.gz && docker pull blang/latex || echo "Cached image found. Skipping pull."
+  - test ! -e docker/texlive-full.tar.gz && docker save blang/latex | gzip > docker/texlive-full.tar.gz || echo "Cached image found. Skipping docker save."
 
 before_script:
   - test -e docker/texlive-full.tar.gz && gzip -dc docker/texlive-full.tar.gz | docker load
