@@ -1,43 +1,54 @@
 #!/usr/bin/env python3
 import re
+import os
 import sys
 import subprocess
+
+from github import Github
+
 
 class REMatcher(object):
     def __init__(self, matchstring):
         self.matchstring = matchstring
+        self.rematch = None
 
-    def match(self,regexp):
+    def match(self, regexp):
         self.rematch = re.match(regexp, self.matchstring)
         return bool(self.rematch)
 
-    def group(self,i):
+    def group(self, i):
         return self.rematch.group(i)
 
 
-def get_texcount_output(dir, file):
-    res = subprocess.run(['texcount', '-freq', '-merge', '-stat', '-dir=' + dir, file], stdout=subprocess.PIPE)
+def get_texcount_output(directory, file):
+    res = subprocess.run(['texcount', '-freq', '-merge', '-stat', '-dir=' + directory, file], stdout=subprocess.PIPE)
     return res.stdout.decode('utf-8')
 
 
 def parse_preamble(preamble):
-    print('### Overall statistics')
-    print('|   | Count |')
-    print('| - | ----- |')
+    res = ""
+
+    res += '### Overall statistics\n'
+    res += '|   | Count |\n'
+    res += '| - | ----- |\n'
 
     for line in preamble.splitlines()[2:]:
         parts = line.split(": ")
-        print('| ' + parts[0] + ' | ' + parts[1] + ' |')
+        res += '| ' + parts[0] + ' | ' + parts[1] + ' |\n'
 
-    print('\n')
+    res += '\n\n'
+
+    return res
 
 
 def parse_headers(headers):
+    res = ""
     indent_unit = "&nbsp;&nbsp;&nbsp;&nbsp;"
     r = re.compile('  (\\d+)\\+\\d+\\+\\d+ \\(\\d+/(\\d+)/(\\d+)/(\\d+)\\) (\\w+): (.*)', re.DOTALL)
-    print('### Statistics grouped by header')
-    print("| Header | Word count | Floats | Math (inline) | Math (displayed) |")
-    print("| - | - | - | - | - |")
+
+    res += '### Statistics grouped by header\n'
+    res += "| Header | Word count | Floats | Math (inline) | Math (displayed) |\n"
+    res += "| - | - | - | - | - |\n"
     for line in headers.splitlines():
         header_indent = ""
         m = REMatcher(line)
@@ -56,33 +67,80 @@ def parse_headers(headers):
             elif header_type == "Subsection":
                 header_indent = indent_unit * 3
 
-            print('| ' + header_indent + header_title + ' | ' + word_count + ' | ' + float_count + ' | ' + inline_math + ' | ' + displayed_math + ' |')
-    print('\n')
+            res += '| ' + header_indent + header_title + ' | ' + word_count + ' | ' + float_count + ' | ' + inline_math + ' | ' + displayed_math + ' |\n'
+    res += '\n\n'
+
+    return res
 
 
 def parse_word_frequency(word_frequency):
-    print('### Top 10 words')
-    print('|   | Count |')
-    print('| - | ----- |')
+    res = ""
+
+    res += '### Top 10 words\n'
+    res += '|   | Count |\n'
+    res += '| - | ----- |\n'
     for word in word_frequency.splitlines()[:10]:
         parts = word.split(": ")
-        print('| ' + parts[0] + ' | ' + parts[1] + '|')
+        res += '| ' + parts[0] + ' | ' + parts[1] + '|\n'
 
-    print('\n')
+    res += '\n\n'
+
+    return res
 
 
 def process_texcount_output(output):
     m = REMatcher(output)
     r = re.compile('(.*)Subcounts:\\n  text\\+headers\\+captions \\(#headers\\/#floats\\/#inlines\\/#displayed\\)\\n(.*)\\nWord: Freq\\n---\\n(.*)\\n---\\n(.*)\\nSum of subset:', re.DOTALL)
+
+    res = ""
+
     if m.match(r):
         # Group 1: Preamble (Overall stats, Encoding)
         # Group 2: Headers and their individual stats
         # Group 3: Word statistics
         # Group 4: Word frequency table
-        parse_preamble(m.group(1))
-        parse_headers(m.group(2))
-        # parse_word_stats(m.group(3))
-        parse_word_frequency(m.group(4))
+        res += parse_preamble(m.group(1))
+        res += parse_headers(m.group(2))
+        # res += parse_word_stats(m.group(3))
+        # res += parse_word_frequency(m.group(4))
+
+    return res
 
 
-process_texcount_output(get_texcount_output(sys.argv[1], sys.argv[2]))
+# Arguments:
+# 1. GitHub Access Token
+# 2. Repository slug (org/repo)
+# 3. Pull request ID
+# 4. Main .tex file
+githubToken = sys.argv[1]
+organization = sys.argv[2].split('/')[0]
+repository = sys.argv[2].split('/')[1]
+pullReqID = int(sys.argv[3])
+files = sys.argv[4:]
+
+print("Organization:\t" + organization)
+print("Repository:\t\t" + repository)
+print("Pull request:\t" + str(pullReqID))
+print("Files:\t\t\t" + str(files))
+
+markdownCode = "# Document analysis\n\n"
+for file in files:
+    folder = os.path.dirname(os.path.abspath(file))
+    markdownCode += "## Grammar check (" + os.path.basename(file) + ")\n\n"
+    markdownCode += "LINTING CODE HERE"
+    markdownCode += "\n\n"
+
+markdownCode += "\n\n___\n\n"
+
+for file in files:
+    folder = os.path.dirname(os.path.abspath(file))
+    markdownCode += "## Statistics (" + os.path.basename(file) + ")\n\n"
+    markdownCode += process_texcount_output(get_texcount_output(folder, file))
+    markdownCode += "\n\n"
+
+g = Github(githubToken)
+
+pullReq = g.get_organization(organization).get_repo(repository).get_pull(pullReqID)
+
+# if pullReq:
+#     pullReq.create_issue_comment(markdownCode)
