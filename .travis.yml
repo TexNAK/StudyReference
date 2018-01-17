@@ -27,4 +27,4 @@ deploy:
   prerelease: true
   on:
     repo: TexNAK/StudyReference
-#    branch: "master"
+    branch: "master"
