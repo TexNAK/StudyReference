@@ -20,8 +20,8 @@ class REMatcher(object):
         return self.rematch.group(i)
 
 
-def get_texcount_output(directory, file):
-    res = subprocess.run(['texcount', '-freq', '-merge', '-stat', '-dir=' + directory, file], stdout=subprocess.PIPE)
+def get_texcount_output(dockercmd, directory, file):
+    res = subprocess.run([dockercmd, 'texcount -freq -merge -stat -dir=/data /data/' + file], stdout=subprocess.PIPE, cwd=directory)
     return res.stdout.decode('utf-8')
 
 
@@ -118,6 +118,8 @@ repository = sys.argv[2].split('/')[1]
 pullReqID = sys.argv[3]
 files = sys.argv[4:]
 
+scriptPath = os.path.dirname(os.path.realpath(__file__))
+
 if "false" == pullReqID:
     print("This is not a Pull Request build. Skipping document analysis!")
     exit(1)
@@ -125,9 +127,9 @@ else:
     pullReqID = int(pullReqID)
 
 print("Organization:\t" + organization)
-print("Repository:\t\t" + repository)
+print("Repository:\t" + repository)
 print("Pull request:\t" + str(pullReqID))
-print("Files:\t\t\t" + str(files))
+print("Files:\t\t" + str(files))
 
 markdownCode = "# Document analysis\n\n"
 for file in files:
@@ -141,12 +143,15 @@ markdownCode += "\n\n___\n\n"
 for file in files:
     folder = os.path.dirname(os.path.abspath(file))
     markdownCode += "## Statistics (" + os.path.basename(file) + ")\n\n"
-    markdownCode += process_texcount_output(get_texcount_output(folder, file))
+
+    texcount_output = get_texcount_output(scriptPath + "/dockercmd.sh", folder, file)
+    markdownCode += process_texcount_output(texcount_output)
+
     markdownCode += "\n\n"
 
 g = Github(githubToken)
 
 pullReq = g.get_organization(organization).get_repo(repository).get_pull(pullReqID)
 
-# if pullReq:
-#     pullReq.create_issue_comment(markdownCode)
+if pullReq:
+    pullReq.create_issue_comment(markdownCode)

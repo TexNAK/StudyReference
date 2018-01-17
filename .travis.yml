@@ -13,7 +13,7 @@ install:
 
 script:
   - echo "HELLO WORLD"
-#  - cd src/ && ../build/dockercmd.sh /bin/sh -c "latexmk -f -pdf -xelatex -shell-escape -interaction=nonstopmode -halt-on-error main.tex"
+#  - cd src/ && ../build/dockercmd.sh "latexmk -f -pdf -xelatex -shell-escape -interaction=nonstopmode -halt-on-error main.tex"
 #  - cp main.pdf StudyReference.pdf
 
 after_success:
