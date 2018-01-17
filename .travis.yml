@@ -3,6 +3,8 @@ addons:
   apt:
     packages:
       - texlive-full
+cache:
+  apt: true
 script:
   - cd src/ && latexmk -f -pdf -xelatex -shell-escape -interaction=nonstopmode -halt-on-error main.tex && cp main.pdf ../StudyReference.pdf
 deploy:
