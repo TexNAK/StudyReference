@@ -1,7 +1,16 @@
-sudo: required
+#sudo: required
 dist: trusty
-before_install:
-- sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended
+addons:
+  apt:
+    packages:
+      - texlive-fonts-recommended
+      - texlive-latex-extra
+      - texlive-fonts-extra
+      - dvipng
+      - texlive-latex-recommended
+      - latexmk
+#before_install:
+#- sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended
 script:
 - cd src/ && latexmk -f -pdf -xelatex -shell-escape -interaction=nonstopmode -halt-on-error main.tex
 - cp src/main.pdf StudyReference.pdf
