@@ -2,13 +2,6 @@ dist: trusty
 addons:
   apt:
     packages:
-      - texlive-fonts-recommended
-      - texlive-latex-extra
-      - texlive-fonts-extra
-      - dvipng
-      - texlive-latex-recommended
-      - latexmk
-      - texlive-xetex
       - texlive-full
 script:
 - cd src/ && latexmk -f -pdf -xelatex -shell-escape -interaction=nonstopmode -halt-on-error main.tex
