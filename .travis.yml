@@ -1,19 +1,15 @@
-dist: trusty
-addons:
-  apt:
-    packages:
-      - texlive-full
-cache:
-  apt: true
+sudo: required
+
+services:
+  - docker
+
+install:
+  - docker pull blang/latex
+
 script:
-  - cd src/ && latexmk -f -pdf -xelatex -shell-escape -interaction=nonstopmode -halt-on-error main.tex
-  - ls
-  - ls src/
-#before_deploy:
-  # Set up git user name and tag this commit
-#  - git config --local user.name "TravisCI"
-#  - git config --local user.email "til@blechschmidt.de"
-#  - git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
+  - cd src/ && ../build/dockercmd.sh /bin/sh -c "latexmk -f -pdf -xelatex -shell-escape -interaction=nonstopmode -halt-on-error main.tex"
+  - cp main.pdf StudyReference.pdf
+
 deploy:
   provider: releases
   skip_cleanup: true
