@@ -5,7 +5,7 @@ services:
 
 cache:
   directories:
-  - docker
+    - docker
 
 install:
   - [ ! -e docker/texlive-full.tar.gz ] && docker pull blang/latex
@@ -15,9 +15,9 @@ before_script:
   - [ -e docker/texlive-full.tar.gz ] && gzip -dc docker/texlive-full.tar.gz | docker load
 
 script:
-- cd src/ && ../build/dockercmd.sh /bin/sh -c "latexmk -f -pdf -xelatex -shell-escape -interaction=nonstopmode -halt-on-error main.tex"
-- cp main.pdf StudyReference.pdf
-- ls
+  - cd src/ && ../build/dockercmd.sh /bin/sh -c "latexmk -f -pdf -xelatex -shell-escape -interaction=nonstopmode -halt-on-error main.tex"
+  - cp main.pdf StudyReference.pdf
+  - ls
 
 deploy:
   provider: releases
