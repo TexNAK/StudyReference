@@ -9,7 +9,7 @@ cache:
 
 install:
   - test ! -e docker/texlive-full.tar.gz && docker pull blang/latex
-  - test ! -e docker/texlive-full.tar.gz && mkdir docker && docker save blang/latex | gzip > docker/texlive-full.tar.gz
+  - test ! -e docker/texlive-full.tar.gz && docker save blang/latex | gzip > docker/texlive-full.tar.gz
 
 before_script:
   - test -e docker/texlive-full.tar.gz && gzip -dc docker/texlive-full.tar.gz | docker load
