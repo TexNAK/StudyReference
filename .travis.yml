@@ -18,7 +18,7 @@ deploy:
   file: StudyReference.pdf
   prerelease: true
   name: "CI Pre-release"
-  body: "This pre-release was automatically issued by the merge of a pull request and generate by the CI-System. Note that there are no guarantees regarding quality or completeness of the document appended to this release since it is a automagically built document."
+  body: "This pre-release was automatically issued by the CI-System triggered by the merge of a pull request. Note that there are no guarantees regarding quality or completeness of the document appended to this release since it is a automatically built."
   on:
     repo: TexNAK/StudyReference
     branch: "master"
