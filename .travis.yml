@@ -4,7 +4,7 @@ services:
   - docker
 
 install:
-  - pip3 install --user pygithub
+  - pip3.6 install --user pygithub
 #  - docker pull blang/latex
 
 script:
