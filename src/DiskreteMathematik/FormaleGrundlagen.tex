@@ -173,6 +173,49 @@
                         \forall a \in A\; \exists! b \in B\colon \left(a, b\right) \in R
                     \end{equation}
                     
+                \paragraph{Transitivität}
+                    Auf einer Menge $M$ ist eine zweistellige Relation $R \subseteq M \times M$ transitiv, wenn für beliebige Elemente $x, y, z \in M$ aus $xRy$ und $yRz$ stets $xRz$ folgt. Der Graph einer transitiven Funktion ist in Abbildung \ref{figure:Mathematik:FormaleGrundlagen:Transitivitaet_Graph} dargestellt.
+                    
+                    Ein Beispiel für eine transitive Relation ist die Kleiner-Relation auf den Reellen Zahlen:
+                    
+                    \begin{equation}
+                        \forall x, y, z \in \mathbb{R}\colon x < y \land y < z \rightarrow x < z
+                    \end{equation}
+                    
+                    \begin{figure}
+                         \centering
+                         \includegraphics[width=0.5\textwidth]{Abbildungen/Transitivitaet_Graph.png}
+                         \caption{Eine transitive Relation als Graph dargestellt.}
+                         \label{figure:Mathematik:FormaleGrundlagen:Transitivitaet_Graph}
+                    \end{figure}
+                    
+                \paragraph{Reflexivität}
+                    Eine zweistellige Relation $R$ auf einer Menge $M$ ist genau dann reflexiv, wenn $\forall x\colon xRx$ gilt. Wenn kein Element diese Anforderung erfüllt, dass wird die Relation irreflexiv genannt. Der Graph einer reflexiven Funktion ist in Abbildung \ref{figure:Mathematik:FormaleGrundlagen:Reflexivitaet_Graph} dargestellt.
+                    
+                    Eine reflexive Relation ist zum Beispiel die Kleiner-Gleich-Relation auf den Reellen Zahlen.
+                    
+                    \begin{figure}
+                         \centering
+                         \includegraphics[width=0.5\textwidth]{Abbildungen/Reflexivitaet_Graph.png}
+                         \caption{Eine reflexive Relation als Graph dargestellt.}
+                         \label{figure:Mathematik:FormaleGrundlagen:Reflexivitaet_Graph}
+                    \end{figure}
+                    
+                \paragraph{Symmetrie}
+                    Eine zweistellige Relation $R$ auf einer Menge $M$ ist genau dann symmetrisch, wenn für alle $x, y \in M$ aus $xRy$ stets $yRx$ folgt. Der Graph einer symmetrischen Funktion ist in Abbildung \ref{figure:Mathematik:FormaleGrundlagen:Symmetrie_Graph} dargestellt.
+                    
+                    Gibt es kein Paar $x, y \in M$ bei dem aus $xRy$ $yRx$ folgt, so nennt man die Relation asymmetrisch.
+                    
+                    Gibt es nur Paare $x, y \in M$, für die entweder aus $xRy$ nich $yRx$ folgt oder $x = y$, so nennt man die Relation antisymmetrisch.
+                    
+                    
+                    \begin{figure}
+                         \centering
+                         \includegraphics[width=0.5\textwidth]{Abbildungen/Symmetrie_Graph.png}
+                         \caption{Eine symmetrische Relation als Graph dargestellt.}
+                         \label{figure:Mathematik:FormaleGrundlagen:Symmetrie_Graph}
+                    \end{figure}
+                    
             \subsubsection{Inversion oder Umkehrung}
                 Wenn man eine Relation $r\colon A \rightarrow B$ hat, dann ist die Inversion $r^{-1}\colon B \rightarrow A$. Eine Funktion ist als Relation immer umkehrbar, als Funktion ist sie dagegen genau dann umkehrbar, wenn ihre Umkehrrelation auch wieder eine Funktion ist, also wenn es eine Umkehrfunktion von ihr gibt.                
                     
