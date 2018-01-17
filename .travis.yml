@@ -16,7 +16,7 @@ script:
   - cp main.pdf StudyReference.pdf
 
 after_success:
-  - ./build/analyze_text.py "${GITHUB_ACCESS_TOKEN}" "${TRAVIS_REPO_SLUG}" "${TRAVIS_PULL_REQUEST}" "./src/main.tex"
+  - pwd && ls && ./build/analyze_text.py "${GITHUB_ACCESS_TOKEN}" "${TRAVIS_REPO_SLUG}" "${TRAVIS_PULL_REQUEST}" "./src/main.tex"
 
 deploy:
   provider: releases
