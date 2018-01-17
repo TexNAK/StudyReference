@@ -8,11 +8,11 @@ cache:
     - docker
 
 install:
-  - [ ! -e docker/texlive-full.tar.gz ] && docker pull blang/latex
-  - [ ! -e docker/texlive-full.tar.gz ] && mkdir docker && docker save blang/latex | gzip > docker/texlive-full.tar.gz
+  - test ! -e docker/texlive-full.tar.gz && docker pull blang/latex
+  - test ! -e docker/texlive-full.tar.gz && mkdir docker && docker save blang/latex | gzip > docker/texlive-full.tar.gz
 
 before_script:
-  - [ -e docker/texlive-full.tar.gz ] && gzip -dc docker/texlive-full.tar.gz | docker load
+  - test -e docker/texlive-full.tar.gz && gzip -dc docker/texlive-full.tar.gz | docker load
 
 script:
   - cd src/ && ../build/dockercmd.sh /bin/sh -c "latexmk -f -pdf -xelatex -shell-escape -interaction=nonstopmode -halt-on-error main.tex"
