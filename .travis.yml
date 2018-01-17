@@ -13,10 +13,11 @@ install:
 
 script:
   - cd src/ && ../build/dockercmd.sh "latexmk -f -pdf -xelatex -shell-escape -interaction=nonstopmode -halt-on-error main.tex"
-  - cp main.pdf StudyReference.pdf
+  - cp main.pdf ../StudyReference.pdf
+  - cd ../
 
 after_success:
-  - pwd && ls && ./build/analyze_text.py "${GITHUB_ACCESS_TOKEN}" "${TRAVIS_REPO_SLUG}" "${TRAVIS_PULL_REQUEST}" "./src/main.tex"
+  - ./build/analyze_text.py "${GITHUB_ACCESS_TOKEN}" "${TRAVIS_REPO_SLUG}" "${TRAVIS_PULL_REQUEST}" "./src/main.tex"
 
 deploy:
   provider: releases
