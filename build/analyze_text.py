@@ -142,9 +142,12 @@ markdownCode += "\n\n___\n\n"
 
 for file in files:
     folder = os.path.dirname(os.path.abspath(file))
-    markdownCode += "## Statistics (" + os.path.basename(file) + ")\n\n"
+    filename = os.path.basename(file)
+    markdownCode += "## Statistics (" + filename + ")\n\n"
 
-    texcount_output = get_texcount_output(scriptPath + "/dockercmd.sh", folder, file)
+    texcount_output = get_texcount_output(scriptPath + "/dockercmd.sh", folder, filename)
+    # print("Texcount output")
+    # print(texcount_output)
     markdownCode += process_texcount_output(texcount_output)
 
     markdownCode += "\n\n"
