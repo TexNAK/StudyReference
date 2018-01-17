@@ -115,8 +115,14 @@ def process_texcount_output(output):
 githubToken = sys.argv[1]
 organization = sys.argv[2].split('/')[0]
 repository = sys.argv[2].split('/')[1]
-pullReqID = int(sys.argv[3])
+pullReqID = sys.argv[3]
 files = sys.argv[4:]
+
+if "false" == pullReqID:
+    print("This is not a Pull Request build. Skipping document analysis!")
+    exit(1)
+else:
+    pullReqID = int(pullReqID)
 
 print("Organization:\t" + organization)
 print("Repository:\t\t" + repository)
