@@ -9,12 +9,11 @@ services:
 
 install:
   - pip install pygithub
-#  - docker pull blang/latex
+  - docker pull blang/latex
 
 script:
-  - echo "HELLO WORLD"
-#  - cd src/ && ../build/dockercmd.sh "latexmk -f -pdf -xelatex -shell-escape -interaction=nonstopmode -halt-on-error main.tex"
-#  - cp main.pdf StudyReference.pdf
+  - cd src/ && ../build/dockercmd.sh "latexmk -f -pdf -xelatex -shell-escape -interaction=nonstopmode -halt-on-error main.tex"
+  - cp main.pdf StudyReference.pdf
 
 after_success:
   - ./build/analyze_text.py "${GITHUB_ACCESS_TOKEN}" "${TRAVIS_REPO_SLUG}" "${TRAVIS_PULL_REQUEST}" "./src/main.tex"

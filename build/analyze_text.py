@@ -149,9 +149,15 @@ for file in files:
 
     markdownCode += "\n\n"
 
+print(" ------------ MARKDOWN CODE START ------------ ")
+print(markdownCode)
+print(" ------------- MARKDOWN CODE END ------------- ")
+
 g = Github(githubToken)
 
 pullReq = g.get_organization(organization).get_repo(repository).get_pull(pullReqID)
 
 if pullReq:
+    print("Commenting on GitHub ...")
+    print(pullReq)
     pullReq.create_issue_comment(markdownCode)
