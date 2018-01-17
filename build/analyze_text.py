@@ -146,21 +146,16 @@ for file in files:
     markdownCode += "## Statistics (" + filename + ")\n\n"
 
     texcount_output = get_texcount_output(scriptPath + "/dockercmd.sh", folder, filename)
-    # print("Texcount output")
-    # print(texcount_output)
     markdownCode += process_texcount_output(texcount_output)
 
     markdownCode += "\n\n"
 
-print(" ------------ MARKDOWN CODE START ------------ ")
-print(markdownCode)
-print(" ------------- MARKDOWN CODE END ------------- ")
 
 g = Github(githubToken)
 
 pullReq = g.get_organization(organization).get_repo(repository).get_pull(pullReqID)
 
 if pullReq:
-    print("Commenting on GitHub ...")
+    print("\nCommenting on GitHub ...")
     print(pullReq)
     pullReq.create_issue_comment(markdownCode)

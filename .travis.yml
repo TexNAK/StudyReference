@@ -7,6 +7,11 @@ python:
 services:
   - docker
 
+addons:
+  apt:
+    packages:
+      - poppler-utils
+
 install:
   - pip install pygithub
   - docker pull blang/latex
