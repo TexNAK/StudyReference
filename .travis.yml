@@ -8,6 +8,8 @@ before_install:
 
 script:
 - cd src/ && ../build/dockercmd.sh /bin/sh -c "latexmk -f -pdf -xelatex -shell-escape -interaction=nonstopmode -halt-on-error main.tex"
+- cp main.pdf StudyReference.pdf
+- ls
 
 deploy:
   provider: releases
@@ -17,4 +19,4 @@ deploy:
   prerelease: true
   on:
     repo: TexNAK/StudyReference
-    branch: "master"
+#    branch: "master"
