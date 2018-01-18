@@ -12,6 +12,13 @@ addons:
     packages:
       - poppler-utils
 
+git:
+  submodules: false
+
+before_install:
+  - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
+  - git submodule update --init --recursive
+
 install:
   - pip install pygithub
   - docker pull blang/latex
