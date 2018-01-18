@@ -21,7 +21,7 @@ before_install:
 
 install:
   - pip install pygithub
-  - docker pull blang/latex
+  - ./build/pull_with_timeout.sh
 
 script:
   - cd src/ && ../build/dockercmd.sh "latexmk -f -pdf -xelatex -shell-escape -interaction=nonstopmode -halt-on-error main.tex"
