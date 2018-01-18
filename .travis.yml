@@ -1,14 +1,35 @@
 sudo: required
 
+language: python
+python:
+  - "3.6"
+
 services:
   - docker
 
+addons:
+  apt:
+    packages:
+      - poppler-utils
+
+git:
+  submodules: false
+
+before_install:
+  - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
+  - git submodule update --init --recursive
+
 install:
+  - pip install pygithub
   - docker pull blang/latex
 
 script:
-  - cd src/ && ../build/dockercmd.sh /bin/sh -c "latexmk -f -pdf -xelatex -shell-escape -interaction=nonstopmode -halt-on-error main.tex"
-  - cp main.pdf StudyReference.pdf
+  - cd src/ && ../build/dockercmd.sh "latexmk -f -pdf -xelatex -shell-escape -interaction=nonstopmode -halt-on-error main.tex"
+  - cp main.pdf ../StudyReference.pdf
+  - cd ../
+
+after_success:
+  - ./build/analyze_text.py "${GITHUB_ACCESS_TOKEN}" "${TRAVIS_REPO_SLUG}" "${TRAVIS_PULL_REQUEST}" "./src/main.tex"
 
 deploy:
   provider: releases
