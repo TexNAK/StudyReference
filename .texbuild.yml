@@ -1,0 +1,4 @@
+spellchecking: true
+statistics: false
+entrypoints:
+  - ./src/main.tex
