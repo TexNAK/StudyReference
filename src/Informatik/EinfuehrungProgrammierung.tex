@@ -93,5 +93,18 @@
                 \item \textbf{Interne Implementation von pairs}
             \end{itemize}
         
+        \subsection{define-struct}
+            In Racket können structs mit dem Befehlt
+            \begin{quote}
+                (define-struct name [parameter1 parameter2])
+            \end{quote}
+            erstellt werden. Der Befehlt erstellt dann einen Konstruktor
+            \begin{quote}
+                (make-name parameter1 parameter2)
+            \end{quote}
+            sowie Selektionsfunktionen wie
+            \begin{quote}
+                (name-parameter1 struct).
+            \end{quote}
 
 \end{document}
