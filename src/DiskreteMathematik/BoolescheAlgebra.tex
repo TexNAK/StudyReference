@@ -23,7 +23,7 @@
                 Die Semantik definiert mithilfe von Präzedensregeln wie die Aussage zu interpretieren ist und ordnet ihr einen Wahrheitswert zu.
                 
     \section{Junktoren}
-    	\label{section:DiskreteMathematik:BoolscheAlgebra:Junktoren}
+        \label{section:DiskreteMathematik:BoolscheAlgebra:Junktoren}
         \paragraph{Negation ($\neg$)}
             Die Negation kehrt den Wahrheitswert um.
             
@@ -69,7 +69,7 @@
         \paragraph{Implikation ($\rightarrow$)}
             Die Implikation ist genau dann falsch, wenn der erste Operand wahr und der zweite falsch ist.
             
-			\begin{equation}
+            \begin{equation}
                 A \rightarrow B \leftrightarrow \neg A \vee B
             \end{equation}
             
@@ -108,7 +108,7 @@
             Eine Wertetabelle enthält verschiedene Belegungen einer oder mehrerer Aussage mit den zugeordneten Wahrheitswerten.
             
         \paragraph{Belegung}
-			Eine Belegung ist ein n-Tupel aus Wahrheitswerten und entspricht einer Zeile in einer Wertetabelle. Es gibt genau $2^n$ Belegungen.
+    	    Eine Belegung ist ein n-Tupel aus Wahrheitswerten und entspricht einer Zeile in einer Wertetabelle. Es gibt genau $2^n$ Belegungen.
             
         
         \paragraph{Modell}
@@ -128,11 +128,11 @@
         \paragraph{Semantische Äquivalenz ($\equiv$)} Die semantische Äquivalenz beschreibt eine Relation zweier Ausdrücke, wo beide Aussagen für die gleiche Belegung den gleichen Wahrheitswert haben.
         
         \subsection{Strategien zum Nachweis der semantischen Äquivalenz}
-        	Gegeben sind zwei Aussagen $F$ und $G$. Um die semantische Äquivalenz beider nachzuweisen ($F \stackrel{?}{\equiv} G$) gibt es mehrere Methoden:
-        	\begin{enumerate}
-        		\item Umwandlung von $F$ in $G$ oder umgekehrt durch Anwendung der in Abschnitt \ref{section:DiskreteMathematik:BoolescheAlgebra:Implikationen} beschriebenen Rechenregeln.
-        		\item Vereinfachung von $F$ und $G$ in einen gemeinsamen Term $H$.
-        	\end{enumerate}
+            Gegeben sind zwei Aussagen $F$ und $G$. Um die semantische Äquivalenz beider nachzuweisen ($F \stackrel{?}{\equiv} G$) gibt es mehrere Methoden:
+            \begin{enumerate}
+            	\item Umwandlung von $F$ in $G$ oder umgekehrt durch Anwendung der in Abschnitt \ref{section:DiskreteMathematik:BoolescheAlgebra:Implikationen} beschriebenen Rechenregeln.
+            	\item Vereinfachung von $F$ und $G$ in einen gemeinsamen Term $H$.
+            \end{enumerate}
                 
     \section{Technische Notation}
         Zusätzlich zu der klassischen Notation wie sie zuvor benutzt wurde gibt es noch die technische Notation. Sie unterscheidet sich in einer Reihe von Operatoren. In den nachfolgenden Abschnitten wird ausschließlich diese Form der Notation genutzt. In Tabelle \ref{table:DiskreteMathematik:BoolscheAlgebra:TechnischeNotation} sind die Unterschiede zur klassischen Notation gelistet
@@ -263,70 +263,70 @@
                 (A \rightarrow B) \cdot (B \rightarrow C) \models (A \rightarrow C)
             \end{equation}
        
-	\section{Logische Schaltungen}
-		Bei der Zeichnung von logischen Schaltungen gibt es einige Konventionen zu beachten:
-		\begin{itemize}
-			\item Eingänge links/oben
-			\item Ausgänge rechts/unten
-			\item Gerade, rechtwinklige Verbindungen
-			\item Invertierung durch NOT-Gatter oder einen Kreis/ein Dreieck am Eingang oder Ausgang eines Gatters
-			\item Verzweigungen werden durch einen ausgefüllten Kreis dargestellt. 
-		\end{itemize}
-	    \subsection{Logikgatter}
-	    	\paragraph{Negation ($\bar A$)}
-	    		Das Negationsgatter negiert den eingehenden Wert.
-	    		\begin{center}
-		    		\begin{circuitikz}
-		    			\draw (0,0) node[not port] {};
-		    		\end{circuitikz}
-	    		\end{center}
-	    		
-			\paragraph{Konjunktion ($AB$)}
-				Das Konjunktionsgatter stellt eine AND-Verknüpfung dar.
-	    		\begin{center}
-		    		\begin{circuitikz}
-		    			\draw (0,0) node[and port] {};
-		    		\end{circuitikz}
-	    		\end{center}
-	    		
-			\paragraph{Disjunktion ($AB$)}
-				Das Disjunktionsgatter stellt eine OR-Verknüpfung dar.
-	    		\begin{center}
-		    		\begin{circuitikz}
-		    			\draw (0,0) node[or port] {};
-		    		\end{circuitikz}
-	    		\end{center}
-	    		
-			\paragraph{NAND ($\overline{AB}$)}
-				Das NAND Gatter stellt eine negierte AND-Verknüpfung dar.
-	    		\begin{center}
-		    		\begin{circuitikz}
-		    			\draw (0,0) node[nand port] {};
-		    		\end{circuitikz}
-	    		\end{center}
-	    		
-			\paragraph{NOR ($\overline{A+B}$)}
-				Das NOR Gatter stellt eine negierte OR-Verknüpfung dar.
-	    		\begin{center}
-		    		\begin{circuitikz}
-		    			\draw (0,0) node[nor port] {};
-		    		\end{circuitikz}
-	    		\end{center}
-	    		
-			\paragraph{Äquivalenz ($A\leftrightarrow B$)}
-				Das Äquivalenz Gatter stellt eine XNOR Verknüpfung dar
-	    		\begin{center}
-		    		\begin{circuitikz}
-		    			\draw (0,0) node[xnor port] {};
-		    		\end{circuitikz}
-	    		\end{center}
-	    		
-			\paragraph{Antivalenz ($A \not\leftrightarrow B$)}
-				Das Antivalenz Gatter stellt eine XOR Verknüpfung dar.
-	    		\begin{center}
-		    		\begin{circuitikz}
-		    			\draw (0,0) node[xor port] {};
-		    		\end{circuitikz}
-	    		\end{center}
+    \section{Logische Schaltungen}
+    	Bei der Zeichnung von logischen Schaltungen gibt es einige Konventionen zu beachten:
+    	\begin{itemize}
+    	    \item Eingänge links/oben
+    	    \item Ausgänge rechts/unten
+    	    \item Gerade, rechtwinklige Verbindungen
+    	    \item Invertierung durch NOT-Gatter oder einen Kreis/ein Dreieck am Eingang oder Ausgang eines Gatters
+    	    \item Verzweigungen werden durch einen ausgefüllten Kreis dargestellt. 
+    	\end{itemize}
+        \subsection{Logikgatter}
+            \paragraph{Negation ($\bar A$)}
+            	Das Negationsgatter negiert den eingehenden Wert.
+            	\begin{center}
+    	        	\begin{circuitikz}
+    	        	    \draw (0,0) node[not port] {};
+    	        	\end{circuitikz}
+            	\end{center}
+            	
+    	    \paragraph{Konjunktion ($AB$)}
+    	    	Das Konjunktionsgatter stellt eine AND-Verknüpfung dar.
+            	\begin{center}
+    	        	\begin{circuitikz}
+    	        	    \draw (0,0) node[and port] {};
+    	        	\end{circuitikz}
+            	\end{center}
+            	
+    	    \paragraph{Disjunktion ($AB$)}
+    	    	Das Disjunktionsgatter stellt eine OR-Verknüpfung dar.
+            	\begin{center}
+    	        	\begin{circuitikz}
+    	        	    \draw (0,0) node[or port] {};
+    	        	\end{circuitikz}
+            	\end{center}
+            	
+    	    \paragraph{NAND ($\overline{AB}$)}
+    	    	Das NAND Gatter stellt eine negierte AND-Verknüpfung dar.
+            	\begin{center}
+    	        	\begin{circuitikz}
+    	        	    \draw (0,0) node[nand port] {};
+    	        	\end{circuitikz}
+            	\end{center}
+            	
+    	    \paragraph{NOR ($\overline{A+B}$)}
+    	    	Das NOR Gatter stellt eine negierte OR-Verknüpfung dar.
+            	\begin{center}
+    	        	\begin{circuitikz}
+    	        	    \draw (0,0) node[nor port] {};
+    	        	\end{circuitikz}
+            	\end{center}
+            	
+    	    \paragraph{Äquivalenz ($A\leftrightarrow B$)}
+    	    	Das Äquivalenz Gatter stellt eine XNOR Verknüpfung dar
+            	\begin{center}
+    	        	\begin{circuitikz}
+    	        	    \draw (0,0) node[xnor port] {};
+    	        	\end{circuitikz}
+            	\end{center}
+            	
+    	    \paragraph{Antivalenz ($A \not\leftrightarrow B$)}
+    	    	Das Antivalenz Gatter stellt eine XOR Verknüpfung dar.
+            	\begin{center}
+    	        	\begin{circuitikz}
+    	        	    \draw (0,0) node[xor port] {};
+    	        	\end{circuitikz}
+        		\end{center}
 
 \end{document}
