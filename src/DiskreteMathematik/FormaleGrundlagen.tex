@@ -258,16 +258,16 @@
             Der Vertex- oder Knotenmenge $S = \{S_0, S_1, S_2, S_3\}$ und der zugehörige Ecken- oder Kantenmenge $R = \{\left(S_0, S_0\right), \left(S_0, S_1\right), \left(S_1, S_2\right), \left(S_2, S_3\right)\}$ kann folgender gerichteter Graph $F\left(S, R\right)$ zugeordnet werden.
             
             \begin{center}
-                \begin{tikzpicture}[xscale=10, yscale=10,>=stealth]
-                    \tikzstyle{v}=[circle, minimum size=1mm,draw,thick]
-                    \node[v] (A) {$S_0$};
-                    \node[v] (B) [right=of A] {$S_1$};
-                    \node[v] (C) [right=of B] {$S_2$};
-                    \node[v] (D) [right=of C] {$S_3$};
-                    \draw [->] (A) to [out=60,in=120,looseness=8] (A);
-                    \draw [->] (A) to (B);
-                    \draw [->] (B) to (C);
-                    \draw [->] (C) to (D);
+                \begin{tikzpicture}[>=stealth',shorten >=1pt,auto, scale = 1, transform shape, node distance=2 cm]
+                    \node[initial,state] (A) {$S_0$};
+                    \node[state] (B) [right of=A] {$S_1$};
+                    \node[state] (C) [right of=B] {$S_2$};
+                    \node[state,accepting] (D) [right of=C] {$S_3$};
+                    
+                    \path[->] (A) edge [loop above] node [align=center] {} (A)
+                              (A) edge []           node [align=center] {} (B)
+                              (B) edge []           node [align=center] {} (C)
+                              (C) edge []           node [align=center] {} (D);
                 \end{tikzpicture}
             \end{center}
             
@@ -294,22 +294,21 @@
             Ein kantengewichteter Graph ist ein Graph mit einer Gewichtungsfunktion $w\colon S \times S \rightarrow \mathbb{R}$.
             
             \begin{center}
-                \begin{tikzpicture}[xscale=10, yscale=10,>=stealth, auto]
-                
-                    \tikzstyle{v}=[circle, minimum size=1mm,draw,thick]
-                    \node[v] (A) {$S_0$};
-                    \node[v] (B) [right=of A] {$S_1$};
-                    \node[v] (C) [right=of B] {$S_2$};
-                    \node[v] (D) [right=of C] {$S_3$};
-                    \draw [->] (A) to [out=60,in=120,looseness=8] node {30} (A);
-                    \draw [->] (A) to node {$8$} (B);
-                    \draw [->] (B) to node {$12$} (C);
-                    \draw [->] (C) to node {$13$} (D);
+                \begin{tikzpicture}[>=stealth',shorten >=1pt,auto,node distance=2 cm, scale = 1, transform shape]
+                    \node[initial,state] (A) {$S_0$};
+                    \node[state] (B) [right of=A] {$S_1$};
+                    \node[state] (C) [right of=B] {$S_2$};
+                    \node[state,accepting] (D) [right of=C] {$S_3$};
+                    
+                    \path[->] (A) edge [loop above] node [align=center] {$30$} (A)
+                              (A) edge [above]       node [align=center] {$8$} (B)
+                              (B) edge [above]       node [align=center] {$12$} (C)
+                              (C) edge [above]       node [align=center] {$13$} (D);
                 \end{tikzpicture}
             \end{center}
             
         \subsection[DEA]{Deterministischer endlicher Automat}
-        \label{section:DiskreteMathematik:FormaleGrundlagen:DEA}
+            \label{section:DiskreteMathematik:FormaleGrundlagen:DEA}
             Ein deterministischer endlicher Automat ist ein kantengewichteter Graph mit weiteren Eigenschaften.
             
             \subsubsection{Eigenschaften}
