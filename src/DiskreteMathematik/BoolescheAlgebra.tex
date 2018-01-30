@@ -262,4 +262,71 @@
             \begin{equation}
                 (A \rightarrow B) \cdot (B \rightarrow C) \models (A \rightarrow C)
             \end{equation}
+       
+	\section{Logische Schaltungen}
+		Bei der Zeichnung von logischen Schaltungen gibt es einige Konventionen zu beachten:
+		\begin{itemize}
+			\item Eingänge links/oben
+			\item Ausgänge rechts/unten
+			\item Gerade, rechtwinklige Verbindungen
+			\item Invertierung durch NOT-Gatter oder einen Kreis/ein Dreieck am Eingang oder Ausgang eines Gatters
+			\item Verzweigungen werden durch einen ausgefüllten Kreis dargestellt. 
+		\end{itemize}
+	    \subsection{Logikgatter}
+	    	\paragraph{Negation ($\bar A$)}
+	    		Das Negationsgatter negiert den eingehenden Wert.
+	    		\begin{center}
+		    		\begin{circuitikz}
+		    			\draw (0,0) node[not port] {};
+		    		\end{circuitikz}
+	    		\end{center}
+	    		
+			\paragraph{Konjunktion ($AB$)}
+				Das Konjunktionsgatter stellt eine AND-Verknüpfung dar.
+	    		\begin{center}
+		    		\begin{circuitikz}
+		    			\draw (0,0) node[and port] {};
+		    		\end{circuitikz}
+	    		\end{center}
+	    		
+			\paragraph{Disjunktion ($AB$)}
+				Das Disjunktionsgatter stellt eine OR-Verknüpfung dar.
+	    		\begin{center}
+		    		\begin{circuitikz}
+		    			\draw (0,0) node[or port] {};
+		    		\end{circuitikz}
+	    		\end{center}
+	    		
+			\paragraph{NAND ($\overline{AB}$)}
+				Das NAND Gatter stellt eine negierte AND-Verknüpfung dar.
+	    		\begin{center}
+		    		\begin{circuitikz}
+		    			\draw (0,0) node[nand port] {};
+		    		\end{circuitikz}
+	    		\end{center}
+	    		
+			\paragraph{NOR ($\overline{A+B}$)}
+				Das NOR Gatter stellt eine negierte OR-Verknüpfung dar.
+	    		\begin{center}
+		    		\begin{circuitikz}
+		    			\draw (0,0) node[nor port] {};
+		    		\end{circuitikz}
+	    		\end{center}
+	    		
+			\paragraph{Äquivalenz ($A\leftrightarrow B$)}
+				Das Äquivalenz Gatter stellt eine XNOR Verknüpfung dar
+	    		\begin{center}
+		    		\begin{circuitikz}
+		    			\draw (0,0) node[xnor port] {};
+		    		\end{circuitikz}
+	    		\end{center}
+	    		
+			\paragraph{Antivalenz ($A \not\leftrightarrow B$)}
+				Das Antivalenz Gatter stellt eine XOR Verknüpfung dar.
+	    		\begin{center}
+		    		\begin{circuitikz}
+		    			\draw (0,0) node[xor port] {};
+		    		\end{circuitikz}
+	    		\end{center}
+
 \end{document}
