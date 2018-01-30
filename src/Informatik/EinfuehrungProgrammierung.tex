@@ -67,6 +67,18 @@
         \paragraph{Regel 5}
             Ersetze jede Konstante, deren Bedeutung sich nicht aus dem Kontext ergibt, durch einen sprechenden Variablennamen.
             
+        \paragraph{Regel 6}
+            Anstatt den Funktionsrumpf direkt zu schreiben, schreibt man ein Skelett, das man anschließend mit Inhalt füllt. Das Skelett kann zum Beispiel von einer cond Verzweigung oder einem Konstruktor sein.
+            
+        \paragraph{Regel 7}
+            Vor Strukturdefinitionen wird ähnlich wie bei Funktionen eine Datendefinition der Form
+            
+            \begin{quote}
+                ;; Ein $s$ ist ein Wert\\
+                ;; (make-s $s_1$ ... $s_n$)\\
+                ;; wobei $s_1$ ...
+            \end{quote}
+            
     \section{Datenabstraktion}
         \subsection{Abstraktionsbarrieren}
             Beispiel 
