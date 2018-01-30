@@ -106,5 +106,30 @@
             \begin{quote}
                 (name-parameter1 struct).
             \end{quote}
+            
+    \section{Nicht-numerische Daten}
+        Zu den nicht numerischen Daten gehören unter anderem
+        
+        \begin{itemize}
+            \item Zeichen
+            \item Zeichenketten
+            \item Bilder
+            \item Töne
+            \item Symbole
+            \item ...
+        \end{itemize}
+        
+        \subsection{Symbolische Ausdrücke}
+            \paragraph{Symbol}
+                Symbole sind eine einfache Möglichkeit nicht-numerische Daten zu repräsentieren. Sie sind in Racket genau wie Variablenamen aufgebaut. Zur Unterscheidung werden sie mit einem vorangestellten Hochkomma (') geschrieben. Symbole sind atomare Daten und werden zu sich selbst ausgewertet. Die einzige Operation auf symbolische Atome ist die Prüfung auf Gleichheit mittels $equal?$.
+                
+            \paragraph{Symbolische Ausdrücke}
+                Symbolische Ausdrücke oder S-Ausdrücke sind entweder 
+                \begin{itemize}
+                    \item Atome wie $27$, $'Karl$ oder $'ist$ oder
+                    \item eine Folge von S-Ausdrücken, eingeschlossen in Klammern, die Listen genannt werden..
+                \end{itemize}
+                
+
 
 \end{document}
