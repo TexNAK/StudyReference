@@ -37,11 +37,34 @@
             Die Semantik einer Programmiersprache legt die Bedeutung von syntaktisch korrekten Ausdrücken fest. Die Semantik funktionaler Programmiersprachen orientiert sich an der Semantik der Mathematik.
             
         \paragraph{Ersetzungen}
-            Um die Bedeutung eines Ausdrucks zu bestimmen, werden nacheinander semantisch äquivalente Umformungen mit dem \emph{Ersetzungsmodell für Funktionsanwendungen} durchgeführt. Die Reihenfolge der Auswertung von Teilausdrücken in funktionalen Sprachen hat dabei keine Auswirkung auf das Endergebnis.
+            Um die Bedeutung eines Ausdrucks zu bestimmen, werden nacheinander semantisch äquivalente Umformungen mit dem \hyperref[section:Programmierung:Auswertungsregeln:ErsetzungsmodellFunktionsanwendungen]{\emph{Ersetzungsmodell für Funktionsanwendungen}} durchgeführt. Die Reihenfolge der Auswertung von Teilausdrücken in funktionalen Sprachen hat dabei keine Auswirkung auf das Endergebnis.
+            
+            Beim Ersetzen von Variablen mit Konstanten wird dieser Prozess als Auswertung bezeichnet. Die Reihenfolge der Auswertungen spielt dabei in funktionalen Programmiersprachen keine Rolle.
+            
+        \paragraph{Ersetzungsmodell für Funktionsanwendungen}
+		\label{section:Programmierung:Auswertungsregeln:ErsetzungsmodellFunktionsanwendungen}
+			Eine Funktion wird ausgewertet, in dem jeder formale Parameter im Funktionsrumpf durch das korrespondierende ausgewertete Argument ersetzt wird.
             
         \paragraph{Self Evaluating Expressions}
-            \emph{Self Evaluating Expressions} sind Ausdrücke, die zu sich selbst ausgewertet werden. In Racket gehören Zahlen zu den \emph{Self Evaluating Expressions}. Die Auswertung eines Ausdrucks ist beendet, wenn eine \emph{Self Evaluating Expressions} erreicht wurde.
+            \emph{Self Evaluating Expressions} sind Ausdrücke, die zu sich selbst ausgewertet werden. Die Auswertung eines Ausdrucks ist beendet, wenn eine solche Expressions erreicht wurde. Beispiele sind Zahlen sowie die Wahrheitswerte $\#t$ und $\#f$.
             
         \paragraph{Funktionsaufruf}
-            Bei strikter Auswertung werden erst alle Argumente eines Funktionsaufrufs berechnet. Dieses Verfahren kommt bei Racket zum Einsatz. Diesem Verfahren steht die lazy Auswertung gegenüber, die zum Beispiel in Haskel verwendet wird, bei dem auch die Argumente erst berechnet werden, wenn sie benötigt werden.         
+            Bei strikter Auswertung werden erst alle Argumente eines Funktionsaufrufs berechnet. Dieses Verfahren kommt bei Racket zum Einsatz. Diesem Verfahren steht die lazy Auswertung gegenüber, welche zum Beispiel in Haskel verwendet wird, bei dem auch die Argumente erst berechnet werden, wenn sie benötigt werden.   
+            
+    \section{Aufschreibregeln für Funktionen}
+        \paragraph{Regel 1}
+            Verwende aussagekräftige Namen für Funktionen und deren Parameter.
+        
+        \paragraph{Regel 2}
+            Beschreibe den Zweck der Funktion in einem Satz mithilfe eines Kommentars in der Zeile vor der Funktionsdefinition. Der Satz sollte das Resultat der Funktion in Abhängigkeit von den Parametern beschreiben.
+            
+        \paragraph{Regel 3}
+            Füge unter der Funktion Tests hinzu, die die Richtigkeit der Funktion auch in Zukunft sicherstellen. Dazu müssen Test für alle Randbereiche vorhanden sein.
+            
+        \paragraph{Regel 4}
+            Definiere für jeden Zusammenhang zwischen Größen, die sich aus der Problemstellung ergeben, eine Funktion.
+            
+        \paragraph{Regel 5}
+            Ersetze jede Konstante, deren Bedeutung sich nicht aus dem Kontext ergibt, durch einen sprechenden Variablennamen.
+
 \end{document}
