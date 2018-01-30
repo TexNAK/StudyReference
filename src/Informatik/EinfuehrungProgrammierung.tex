@@ -39,8 +39,13 @@
         \paragraph{Ersetzungen}
             Um die Bedeutung eines Ausdrucks zu bestimmen, werden nacheinander semantisch äquivalente Umformungen mit dem \emph{Ersetzungsmodell für Funktionsanwendungen} durchgeführt. Die Reihenfolge der Auswertung von Teilausdrücken in funktionalen Sprachen hat dabei keine Auswirkung auf das Endergebnis.
             
+            Beim Ersetzen von Variablen mit Konstanten wird dieser Prozess als Auswertung bezeichnet. Die Reihenfolge der Auswertungen spielt dabei in funktionalen Programmiersprachen keine Rolle.
+            
+        \paragraph{Ersetzungsmodell für Funktionsanwendungen}
+            Eine Funktion wird ausgewertet, in dem jeder formale Parameter im Funktionsrumpf durch das korrespondierende ausgewertete Argument ersetzt wird.
+            
         \paragraph{Self Evaluating Expressions}
-            \emph{Self Evaluating Expressions} sind Ausdrücke, die zu sich selbst ausgewertet werden. In Racket gehören Zahlen zu den \emph{Self Evaluating Expressions}. Die Auswertung eines Ausdrucks ist beendet, wenn eine \emph{Self Evaluating Expressions} erreicht wurde.
+            \emph{Self Evaluating Expressions} sind Ausdrücke, die zu sich selbst ausgewertet werden. In Racket gehören Zahlen zu den Self Evaluating Expressions. Die Auswertung eines Ausdrucks ist beendet, wenn eine Self Evaluating Expressions erreicht wurde. Beispiele für Self Evaluating Expressions sind Zahlen und die Wahrheitswerte $\#t$ und $\#f$.
             
         \paragraph{Funktionsaufruf}
             Bei strikter Auswertung werden erst alle Argumente eines Funktionsaufrufs berechnet. Dieses Verfahren kommt bei Racket zum Einsatz. Diesem Verfahren steht die lazy Auswertung gegenüber, die zum Beispiel in Haskel verwendet wird, bei dem auch die Argumente erst berechnet werden, wenn sie benötigt werden.         
