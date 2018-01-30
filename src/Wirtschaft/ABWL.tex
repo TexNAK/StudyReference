@@ -238,7 +238,138 @@
                     \frac{\text{Liquidemittel} + \text{Forderungen} + \text{Vorrat}}{\text{kurzfristige Verbindlichkeiten}} \cdot 100\% \geq 150\%
                 \end{equation}        
     
-    \section{Eintscheidungsfindung}
-        % TODO: schreiben
+    \section{Entscheidungsfindung}
+        Entscheidungen können in verschiedene Kategorien unterteilt werden:
+        
+        \paragraph{Entscheidungen bei sicheren Erwartungen}
+            \begin{itemize}
+                \item[Konsequenzen] Bekannt
+                \item[Eintrittswahrscheinlichkeiten] Bekannt
+            \end{itemize}
+        
+        \paragraph{Entscheidung unter Risiko}
+            \begin{itemize}
+                \item[Konsequenzen] Unbekannt
+                \item[Eintrittswahrscheinlichkeiten] Bekannt
+            \end{itemize}
+        
+        \paragraph{Entscheidung bei unsicheren Erwartungen}
+            \begin{itemize}
+                \item[Konsequenzen] Unbekannt
+                \item[Eintrittswahrscheinlichkeiten] Unbekannt
+            \end{itemize}
+            
+        \subsection{Entscheidungen bei sicheren Erwartungen}
+            \begin{tabular}{cc}
+              Statisch & Dynamisch\\
+              \hline
+              Kostenvergleichsrechnung & Kapitalwertmethode \\
+              Gewinnvergleichsrechnung & Interne-Zinsfuß-Methode \\
+              Rentabilitätsrechnung & Dynamische Annuitätenrechnung \\
+              Annuitätenrechnung &
+            \end{tabular}
+
+            \paragraph{Annuitätendarlehen}
+                Bei einem Annuitätendarlehen gibt es einen jährlichen, festen Betrag. Dieser wird aufgeteilt in eine Zinskomponente und eine Tilgungskomponente.
+
+            \paragraph{Barwert heute}
+                Der Barwert heute sind abgezinsten Zahlungsströme.
+                
+            \subsubsection{Statische Verfahren}
+                \paragraph{Kostenvergleichsrechnung}
+                    Eine Kostenvergleichsrechnung einer neuen Produktionsanlage könnte folgendermaßen aussehen:
+                    
+                    \noindent + Kaufpreis\\
+                    \noindent -- Kaufpreisminderungen (Skonto\footnote{Kaufpreisminderung aufgrund einer frühzeitigen Bezahlung}, Rabatt\footnote{Kaufpreisminderung direkt auf der Rechnung}, Subventionen\footnote{Unterstützung durch Organisationen oder den Staat}, Bonus\footnote{Rückzahlungen am Ende des Jahres.})\\
+                    \noindent\rule{2cm}{0.4pt}\\
+                    \noindent = Nettokaufpreis\\
+                    \noindent + Kaufpreisnebenkosten (Fracht, Versicherung, Steuern, Zölle, Rollgeld)\\
+                    \noindent\rule{2cm}{0.4pt}\\
+                    \noindent = Nettokaufpreis inklusive Nebenkosten\\
+                    \noindent + Montagekosten\\
+                    \noindent + Fundament\\
+                    \noindent + Schulungen  
+
+                \paragraph{Gewinnvergleichsrechnung}
+                    Bei der Gewinnvergleichsrechnung wird der Gewinn = Erlöse - Kosten verglichen:
+                    
+                    \noindent + Betriebskosten\\
+                    \noindent + Wartungskosten\\
+                    \noindent + Personalkosten\\
+                    \noindent + Zinsaufwendungen\\
+                    \noindent + Abschreibungen\\
+                    \noindent\rule{2cm}{0.4pt}\\
+                    \noindent = laufende Kosten\\                
+                    \noindent\rule{8cm}{0.4pt}\\
+                    \noindent + Verkaufserlöse\\
+                    \noindent\rule{2cm}{0.4pt}\\
+                    \noindent = Erlöse\\
+                    
+                    \subparagraph{Abschreibungen}
+                        Abschreibungen sind Absetzungen für Abnutzung (AfA).
+                        
+                        \textbf{Beispiel:}\\
+                        Nettokaufpreis inklusive Nebenkosten: 960,000\\
+                        Nutzungsdauer: 8 Jahre
+                        
+                        Wenn eine lineare Abschreibung angewendet wird, können jedes Jahr 120,000 abgeschrieben werden. Da Abschreibungen den Gewinn reduzieren, muss das Unternehmen weniger Steuern zahlen.
+                        
+                \paragraph{Rentabilitätsrechnung}
+                    Bei der Rentabilitätsrechnung wird die Rentabilität verglichen.
+                    
+                \paragraph{Annuitätenrechnung}
+                    Bei der Annuitätenrechnung kumuliert man die Gewinne der Jahre und ermittelt so das Jahr, in dem sich die Anlage annulliert hat.
+                    
+            \subsubsection{Dynamische Verfahren}
+                \paragraph{Kapitalwertmethode}
+                    \begin{equation}
+                        C_0 = \left(e - a\right)\frac{\left(1 + i\right)^n - 1}{i \cdot \left( 1 + i \right)^n} + R\cdot \left( 1 + i \right)^{-n} - A_0
+                    \end{equation}
+                    
+                    \begin{itemize}
+                        \item[$e$] Einzahlungen/Einnahmen
+                        \item[$a$] Auszahlungen/Ausgaben
+                        \item[$i$] Renditeerwartungen des Managements
+                        \item[$n$] Nutzungsdauer
+                        \item[$R$] Restwert
+                        \item[$A_0$] Anschaffungsauszahlungen
+                    \end{itemize}
+                    
+                    \subparagraph{Gewinn}
+                        Der Gewinn wird mit $\left(e - a\right)$ in der Formel ausgedrückt.
+                    
+                    \subparagraph{Abzinsfaktor}
+                        Der Abzinsfaktor (AbF) $\left( 1 + i \right)^{-n}$ wird verwendet, um einen Betrag über $n$ Jahre abzuzinsen. Das Bedeutet, wenn man nach $n$ Jahren einen Restbetrag von $x$ hat, hätte man auch $x$ für $n$ Jahre bei einem Zinssatz von $i$ anlegen können.
+                        
+                    \subparagraph{Aufzinsfaktor}
+                        Der Aufzinsfaktor (AuF) $\left( 1 + i \right)^{n} = \frac{1}{\text{AbF}}$ wird verwendet, um einen Betrag über $n$ Jahre aufzuzinsen.
+                        
+                    \subparagraph{Diskontierungsfaktor}
+                        Der Diskontierungsfaktor (DSF) $\frac{\left(1 + i\right)^n - 1}{i \cdot \left( 1 + i \right)^n}$ wird verwendet, um einen jährlichen Gewinn über $n$ Jahre abzuzinsen.
+                        
+                    \subparagraph{Kapitalwiedergewinnungsfaktor}
+                        Der Kapitalwiedergewinnungsfaktor (KwF) ist das Reziprok des Diskontierungsfaktor.
+                        
+                    \subparagraph{Bedeutung von $C_0$}
+                        Wenn man mit der Kapitalwertmethode $C_0 = 0$ berechnet, erfüllt das Vorhaben die Renditeerwartung $i$ genau. Bei Werten über $0$ hat man eine höhere Rendite. Bei Werten kleiner als $0$ muss an den Parametern arbeiten oder das Vorhaben aufgeben.
+                        
+                \paragraph{Gestaffelte Kapitalwertmethode}
+                    In vielen Fällen ist der Gewinn über die Jahre nicht konstant sondern ändert sich. In diesem Fall muss man die gestaffelte Kapitalwertmethode anwenden.
+                    
+                    Bei der gestaffelten Kapitalwertmethode wird zunächst der Zeitwert der einzelnen Staffeln berechnet. Dafür wird der Gewinn mit dem Diskontierungsfaktor der Dauer der Staffel multipliziert. Anschließend wird die Summe der der Zeitwert multipliziert mit dem Abzinsfaktor berechnet. Gegebenenfalls muss noch der Restwert über die gesamte Zeit berechnet werden.
+                    
+                    Bei I Staffeln ohne Restwert könnte die Formal folgendermaßen aussehen
+                    
+                    \begin{equation}
+                        \sum_{i=1}^I \left(\text{Gewinn d. Staffel $i$}\right) \cdot \left(\text{DSF d. Dauer d. Staffel $i$}\right) \cdot \left(\text{AbF d. Zeit bis zur Staffel $i$}\right) - A_0
+                    \end{equation}
+                    
+            \subsection{Nutzwertanalyse}
+                Bei der Nutzwertanalyse werden zuvor festgelegte Kriterien gewichtet und anschließend mit einer Scoring Tabelle bewertet. Der Gesamtscore ist die Summe der Produkte der Faktoren und Einzelscores:
+                
+                \begin{equation}
+                    \text{Score} = \sum_{i=1}^N \text{Faktor $i$} \cdot \text{Score $i$}
+                \end{equation}
+                        
         
 \end{document}
