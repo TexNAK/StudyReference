@@ -126,6 +126,13 @@
         \paragraph{Semantische Implikation ($\models$)} Die semantische Implikation beschreibt ein Verhältnis zweier Aussagen, wo jede Belegung welche die erste Aussage wahr macht auch die zweite Aussage wahr ist. Dies muss nicht umgekehrt anwendbar sein.
         
         \paragraph{Semantische Äquivalenz ($\equiv$)} Die semantische Äquivalenz beschreibt eine Relation zweier Ausdrücke, wo beide Aussagen für die gleiche Belegung den gleichen Wahrheitswert haben.
+        
+        \subsection{Strategien zum Nachweis der semantischen Äquivalenz}
+        	Gegeben sind zwei Aussagen $F$ und $G$. Um die semantische Äquivalenz beider nachzuweisen ($F \stackrel{?}{\equiv} G$) gibt es mehrere Methoden:
+        	\begin{enumerate}
+        		\item Umwandlung von $F$ in $G$ oder umgekehrt durch Anwendung der in Abschnitt \ref{section:DiskreteMathematik:BoolescheAlgebra:Implikationen} beschriebenen Rechenregeln.
+        		\item Vereinfachung von $F$ und $G$ in einen gemeinsamen Term $H$.
+        	\end{enumerate}
                 
     \section{Technische Notation}
         Zusätzlich zu der klassischen Notation wie sie zuvor benutzt wurde gibt es noch die technische Notation. Sie unterscheidet sich in einer Reihe von Operatoren. In den nachfolgenden Abschnitten wird ausschließlich diese Form der Notation genutzt. In Tabelle \ref{table:DiskreteMathematik:BoolscheAlgebra:TechnischeNotation} sind die Unterschiede zur klassischen Notation gelistet
@@ -146,7 +153,7 @@
         \end{table}
             
     \section{Äquivalenzen und Implikationen}
-        
+        \label{section:DiskreteMathematik:BoolescheAlgebra:Implikationen}
         \paragraph{Neutralität}
             \begin{subequations}
                 \begin{align}
@@ -243,6 +250,8 @@
             \begin{equation}
                 ((A \rightarrow B) \cdot A) \models B
             \end{equation}
+            
+            Den modus ponens kann als Regel ($A \rightarrow B$), Beobachtung ($A$) und Folgerung ($B$) hergeleitet werden.
         
         \paragraph{modus tollens}
             \begin{equation}
@@ -253,4 +262,71 @@
             \begin{equation}
                 (A \rightarrow B) \cdot (B \rightarrow C) \models (A \rightarrow C)
             \end{equation}
+       
+	\section{Logische Schaltungen}
+		Bei der Zeichnung von logischen Schaltungen gibt es einige Konventionen zu beachten:
+		\begin{itemize}
+			\item Eingänge links/oben
+			\item Ausgänge rechts/unten
+			\item Gerade, rechtwinklige Verbindungen
+			\item Invertierung durch NOT-Gatter oder einen Kreis/ein Dreieck am Eingang oder Ausgang eines Gatters
+			\item Verzweigungen werden durch einen ausgefüllten Kreis dargestellt. 
+		\end{itemize}
+	    \subsection{Logikgatter}
+	    	\paragraph{Negation ($\bar A$)}
+	    		Das Negationsgatter negiert den eingehenden Wert.
+	    		\begin{center}
+		    		\begin{circuitikz}
+		    			\draw (0,0) node[not port] {};
+		    		\end{circuitikz}
+	    		\end{center}
+	    		
+			\paragraph{Konjunktion ($AB$)}
+				Das Konjunktionsgatter stellt eine AND-Verknüpfung dar.
+	    		\begin{center}
+		    		\begin{circuitikz}
+		    			\draw (0,0) node[and port] {};
+		    		\end{circuitikz}
+	    		\end{center}
+	    		
+			\paragraph{Disjunktion ($AB$)}
+				Das Disjunktionsgatter stellt eine OR-Verknüpfung dar.
+	    		\begin{center}
+		    		\begin{circuitikz}
+		    			\draw (0,0) node[or port] {};
+		    		\end{circuitikz}
+	    		\end{center}
+	    		
+			\paragraph{NAND ($\overline{AB}$)}
+				Das NAND Gatter stellt eine negierte AND-Verknüpfung dar.
+	    		\begin{center}
+		    		\begin{circuitikz}
+		    			\draw (0,0) node[nand port] {};
+		    		\end{circuitikz}
+	    		\end{center}
+	    		
+			\paragraph{NOR ($\overline{A+B}$)}
+				Das NOR Gatter stellt eine negierte OR-Verknüpfung dar.
+	    		\begin{center}
+		    		\begin{circuitikz}
+		    			\draw (0,0) node[nor port] {};
+		    		\end{circuitikz}
+	    		\end{center}
+	    		
+			\paragraph{Äquivalenz ($A\leftrightarrow B$)}
+				Das Äquivalenz Gatter stellt eine XNOR Verknüpfung dar
+	    		\begin{center}
+		    		\begin{circuitikz}
+		    			\draw (0,0) node[xnor port] {};
+		    		\end{circuitikz}
+	    		\end{center}
+	    		
+			\paragraph{Antivalenz ($A \not\leftrightarrow B$)}
+				Das Antivalenz Gatter stellt eine XOR Verknüpfung dar.
+	    		\begin{center}
+		    		\begin{circuitikz}
+		    			\draw (0,0) node[xor port] {};
+		    		\end{circuitikz}
+	    		\end{center}
+
 \end{document}
