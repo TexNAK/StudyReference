@@ -308,7 +308,8 @@
                 \end{tikzpicture}
             \end{center}
             
-        \subsection[DEA]{Deterministischer Endlicher Automat}
+        \subsection[DEA]{Deterministischer endlicher Automat}
+        \label{section:DiskreteMathematik:FormaleGrundlagen:DEA}
             Ein deterministischer endlicher Automat ist ein kantengewichteter Graph mit weiteren Eigenschaften.
             
             \subsubsection{Eigenschaften}
@@ -338,6 +339,26 @@
                         |S| + |\Sigma| < \infty
                     \end{equation}
                     
+        \subsection[NEA]{Nicht deterministischer endlicher Automat}
+        	Ein nicht deterministischer endlicher Automat unterscheidet sich von einem \hyperref[section:DiskreteMathematik:FormaleGrundlagen:DEA]{DEA} indem seine Zustandsüberführungsfunktion nicht eindeutig ist, sondern eine Menge von Zuständen zurückgibt. Es kann also mehrere Zustände für ein gegebenes Wort geben.
+        	Formal wird ein NEA durch ein Quintupel aus den Elementen $(S, \Sigma, \delta, S_0, K)$ definiert:
+        	
+        	\paragraph{Zustände ($S$)} Eine endliche, nicht leere Menge von möglichen Zuständen des DEA.
+        	
+        	\paragraph{Eingabealphabet ($\Sigma$)} Eine endliche, nicht leere Menge aller Buchstaben die die Zustandsübergangsfunktion akzeptiert.
+        	
+        	\paragraph{Zustandsübergangsfunktion ($\delta$)} Die Übergangsrelation gibt für einen gegebenen Zustand $s \in S$ und ein Buchstaben $a \in \Sigma$ die Menge der neuen Zustände zurück. Formal wird dies wie folgt geschrieben:
+        		\begin{equation}
+        			\delta: s \times a \rightarrow S^*
+        		\end{equation}
+        		
+    		\paragraph{Startzustand ($S_0$)}
+                Ein Element $S_0 \in S$ wird als Startzustand festgelegt.
+                
+			\paragraph{Akzeptierende Zustände ($K$)}
+			    Eine Menge $K \subseteq S$ wird als Menge der akzeptierenden Zustände festgelegt.
+			
+                    
         \subsection{Chomsky-Hierarchie}
             Die Chomsky-Hierarchie ordnet alle Sprachen mit 4 Typen:
             
@@ -354,5 +375,5 @@
                 Typ 2 Sprachen sind kontextfreie Sprachen und sind eine Teilmenge der Typ 1 Sprachen.
                 
             \paragraph{Typ 3}
-                Typ 3 Sprachen sind reguläre Sprachen mit einer regulären Grammatik und sind eine Teilmenge der Typ 2 Sprachen.
+                Typ 3 Sprachen sind reguläre Sprachen mit einer regulären Grammatik und sind eine Teilmenge der Typ 2 Sprachen. Sie werden von endlichen Automaten akzeptiert.
 \end{document}
