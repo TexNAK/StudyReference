@@ -59,7 +59,7 @@
             Beschreibe den Zweck der Funktion in einem Satz mithilfe eines Kommentars in der Zeile vor der Funktionsdefinition. Der Satz sollte das Resultat der Funktion in Abhängigkeit von den Parametern beschreiben.
             
         \paragraph{Regel 3}
-            Zwischen Funktionesbeschreibung und Funktionskopf werden Tests hinzugefügt, die die Richtigkeit der Funktion auch in Zukunft sicherstellen. Dazu müssen Test für alle Randbereiche vorhanden sein.
+            Zwischen Funktionsbeschreibung und Funktionskopf werden Tests hinzugefügt, die die Richtigkeit der Funktion auch in Zukunft sicherstellen. Dazu müssen Test für alle Randbereiche vorhanden sein.
             
         \paragraph{Regel 4}
             Definiere für jeden Zusammenhang zwischen Größen, die sich aus der Problemstellung ergeben, eine Funktion.
@@ -68,10 +68,10 @@
             Ersetze jede Konstante, deren Bedeutung sich nicht aus dem Kontext ergibt, durch einen sprechenden Variablennamen.
             
         \paragraph{Regel 6}
-            Anstatt den Funktionsrumpf direkt zu schreiben, schreibt man ein Skelett, das man anschließend mit Inhalt füllt. Das Skelett kann zum Beispiel von einer cond Verzweigung oder einem Konstruktor sein.
+            Anstatt den Funktionsrumpf direkt zu schreiben, schreibt man ein Skelett, das man anschließend mit Inhalt füllt. Dieses kann zum Beispiel von einer cond Verzweigung oder einem Konstruktor sein.
             
         \paragraph{Regel 7}
-            Vor Strukturdefinitionen wird ähnlich wie bei Funktionen eine Datendefinition der Form
+            Vor Strukturdefinitionen wird ähnlich wie bei Funktionen eine Datendefinition der Form vorangestellt.
             
             \begin{lstlisting}[language=Lisp]
                 ;; Ein s ist ein Wert
@@ -81,8 +81,7 @@
             
     \section{Datenabstraktion}
         \subsection{Abstraktionsbarrieren}
-            Beispiel 
-            
+            % TODO Add description for Abstraktionsbarrieren
             \begin{itemize}
                 \item \textbf{Punkt in der Sicht der Anwendungsprogramme}
                 \item ... add-point equal-point? ...
@@ -94,18 +93,18 @@
             \end{itemize}
         
         \subsection{define-struct}
-            In Racket können structs mit dem Befehlt
-            \begin{quote}
+            In Racket können structs mit dem Befehl
+            \begin{lstlisting}[language=Lisp]
                 (define-struct name [parameter1 parameter2])
-            \end{quote}
-            erstellt werden. Der Befehlt erstellt dann einen Konstruktor
-            \begin{quote}
+            \end{lstlisting}
+            erstellt werden. Der Befehl erstellt dann einen Konstruktor
+            \begin{lstlisting}[language=Lisp]
                 (make-name parameter1 parameter2)
-            \end{quote}
+            \end{lstlisting}
             sowie Selektionsfunktionen wie
-            \begin{quote}
+            \begin{lstlisting}[language=Lisp]
                 (name-parameter1 struct).
-            \end{quote}
+            \end{lstlisting}
             
     \section{Nicht-numerische Daten}
         Zu den nicht numerischen Daten gehören unter anderem
@@ -131,6 +130,7 @@
                 \end{itemize}
                 
     \section{Algebraische Datentypen}
+    	% TODO Add generic description what algebraic types are
         \paragraph{Produkttypen}
             Der Typ Punkt wird als Produkttyp bezeichnet, da die Menge aller möglichen Punkte das kartesische Produkt der einzelnen Komponenten sind:
             
