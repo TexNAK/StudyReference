@@ -126,6 +126,13 @@
         \paragraph{Semantische Implikation ($\models$)} Die semantische Implikation beschreibt ein Verhältnis zweier Aussagen, wo jede Belegung welche die erste Aussage wahr macht auch die zweite Aussage wahr ist. Dies muss nicht umgekehrt anwendbar sein.
         
         \paragraph{Semantische Äquivalenz ($\equiv$)} Die semantische Äquivalenz beschreibt eine Relation zweier Ausdrücke, wo beide Aussagen für die gleiche Belegung den gleichen Wahrheitswert haben.
+        
+        \subsection{Strategien zum Nachweis der semantischen Äquivalenz}
+        	Gegeben sind zwei Aussagen $F$ und $G$. Um die semantische Äquivalenz beider nachzuweisen ($F \stackrel{?}{\equiv} G$) gibt es mehrere Methoden:
+        	\begin{enumerate}
+        		\item Umwandlung von $F$ in $G$ oder umgekehrt durch Anwendung der in Abschnitt \ref{section:DiskreteMathematik:BoolescheAlgebra:Implikationen} beschriebenen Rechenregeln.
+        		\item Vereinfachung von $F$ und $G$ in einen gemeinsamen Term $H$.
+        	\end{enumerate}
                 
     \section{Technische Notation}
         Zusätzlich zu der klassischen Notation wie sie zuvor benutzt wurde gibt es noch die technische Notation. Sie unterscheidet sich in einer Reihe von Operatoren. In den nachfolgenden Abschnitten wird ausschließlich diese Form der Notation genutzt. In Tabelle \ref{table:DiskreteMathematik:BoolscheAlgebra:TechnischeNotation} sind die Unterschiede zur klassischen Notation gelistet
@@ -146,7 +153,7 @@
         \end{table}
             
     \section{Äquivalenzen und Implikationen}
-        
+        \label{section:DiskreteMathematik:BoolescheAlgebra:Implikationen}
         \paragraph{Neutralität}
             \begin{subequations}
                 \begin{align}
