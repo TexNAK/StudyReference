@@ -313,15 +313,15 @@
             
             \subsubsection{Eigenschaften}
                 \paragraph{Eingabealphabet}
-                    Ein deterministischer endlicher Automat hat eine Eingabealphabet $\Sigma$
+                    Ein deterministischer endlicher Automat hat eine Eingabealphabet $\Sigma$.
                 
                 \paragraph{Gewichtungsfunktion}
                     Die Gewichtungsfunktion wird als $w\colon S \times S \rightarrow \Sigma$ definiert.
                     
                 \paragraph{Zustandsübergangsfunktion}
-                    Statt einer Kantenmenge kommt eine Zustandsübergangsfunktion $\delta\colon S \times \Sigma \rightarrow \S$ zum Einsatz.
+                    Statt einer Kantenmenge kommt eine Zustandsübergangsfunktion $\delta\colon S \times \Sigma \rightarrow S$ zum Einsatz.
                     
-                    Die Funktion $\delta^*\colon S \times \Sigma^*$ kann ganze Wörter verarbeiten.
+                    Die reflexiv-transitive Zustandsübergangsfunktion $\delta^*\colon S \times \Sigma^*$ kann ganze Wörter verarbeiten.
                     
                 
                     
@@ -349,6 +349,12 @@
             \paragraph{Zustandsübergangsfunktion ($\delta$)} Die Übergangsrelation gibt für einen gegebenen Zustand $s \in S$ und ein Buchstaben $a \in \Sigma$ die Menge der neuen Zustände zurück. Formal wird dies wie folgt geschrieben:
             	\begin{equation}
             	    \delta: s \times a \rightarrow S^*
+            	\end{equation}
+            	
+            	Auch hier gibt es wie beim DEA eine transitiv-reflexive Zustandsübergangsfunktion: 
+            	
+            	\begin{equation}
+            	    \delta^*: s^* \times a \rightarrow S^*
             	\end{equation}
             	
         	\paragraph{Startzustand ($S_0$)}
