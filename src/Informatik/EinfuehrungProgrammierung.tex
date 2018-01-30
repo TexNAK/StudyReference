@@ -37,12 +37,13 @@
             Die Semantik einer Programmiersprache legt die Bedeutung von syntaktisch korrekten Ausdrücken fest. Die Semantik funktionaler Programmiersprachen orientiert sich an der Semantik der Mathematik.
             
         \paragraph{Ersetzungen}
-            Um die Bedeutung eines Ausdrucks zu bestimmen, werden nacheinander semantisch äquivalente Umformungen mit dem \emph{Ersetzungsmodell für Funktionsanwendungen} durchgeführt. Die Reihenfolge der Auswertung von Teilausdrücken in funktionalen Sprachen hat dabei keine Auswirkung auf das Endergebnis.
+            Um die Bedeutung eines Ausdrucks zu bestimmen, werden nacheinander semantisch äquivalente Umformungen mit dem \hyperref[section:Programmierung:Auswertungsregeln:ErsetzungsmodellFunktionsanwendungen]{\emph{Ersetzungsmodell für Funktionsanwendungen}} durchgeführt. Die Reihenfolge der Auswertung von Teilausdrücken in funktionalen Sprachen hat dabei keine Auswirkung auf das Endergebnis.
             
             Beim Ersetzen von Variablen mit Konstanten wird dieser Prozess als Auswertung bezeichnet. Die Reihenfolge der Auswertungen spielt dabei in funktionalen Programmiersprachen keine Rolle.
             
         \paragraph{Ersetzungsmodell für Funktionsanwendungen}
-            Eine Funktion wird ausgewertet, in dem jeder formale Parameter im Funktionsrumpf durch das korrespondierende ausgewertete Argument ersetzt wird.
+		\label{section:Programmierung:Auswertungsregeln:ErsetzungsmodellFunktionsanwendungen}
+			Eine Funktion wird ausgewertet, in dem jeder formale Parameter im Funktionsrumpf durch das korrespondierende ausgewertete Argument ersetzt wird.
             
         \paragraph{Self Evaluating Expressions}
             \emph{Self Evaluating Expressions} sind Ausdrücke, die zu sich selbst ausgewertet werden. Die Auswertung eines Ausdrucks ist beendet, wenn eine solche Expressions erreicht wurde. Beispiele sind Zahlen sowie die Wahrheitswerte $\#t$ und $\#f$.
