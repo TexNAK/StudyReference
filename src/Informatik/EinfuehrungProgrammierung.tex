@@ -66,5 +66,20 @@
             
         \paragraph{Regel 5}
             Ersetze jede Konstante, deren Bedeutung sich nicht aus dem Kontext ergibt, durch einen sprechenden Variablennamen.
+            
+    \section{Datenabstraktion}
+        \subsection{Abstraktionsbarrieren}
+            Beispiel 
+            
+            \begin{itemize}
+                \item \textbf{Punkt in der Sicht der Anwendungsprogramme}
+                \item ... add-point equal-point? ...
+                \item \textbf{Punkte bestehen aus x- und y-Koordinaten}
+                \item ... make-point point-x point-y
+                \item \textbf{Punkt implementiert als pairs}
+                \item ... cons car cdr ...
+                \item \textbf{Interne Implementation von pairs}
+            \end{itemize}
+        
 
 \end{document}
