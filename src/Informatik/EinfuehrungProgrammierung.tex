@@ -37,11 +37,109 @@
             Die Semantik einer Programmiersprache legt die Bedeutung von syntaktisch korrekten Ausdrücken fest. Die Semantik funktionaler Programmiersprachen orientiert sich an der Semantik der Mathematik.
             
         \paragraph{Ersetzungen}
-            Um die Bedeutung eines Ausdrucks zu bestimmen, werden nacheinander semantisch äquivalente Umformungen mit dem \emph{Ersetzungsmodell für Funktionsanwendungen} durchgeführt. Die Reihenfolge der Auswertung von Teilausdrücken in funktionalen Sprachen hat dabei keine Auswirkung auf das Endergebnis.
+            Um die Bedeutung eines Ausdrucks zu bestimmen, werden nacheinander semantisch äquivalente Umformungen mit dem \hyperref[section:Programmierung:Auswertungsregeln:ErsetzungsmodellFunktionsanwendungen]{\emph{Ersetzungsmodell für Funktionsanwendungen}} durchgeführt. Die Reihenfolge der Auswertung von Teilausdrücken in funktionalen Sprachen hat dabei keine Auswirkung auf das Endergebnis.
+            
+            Beim Ersetzen von Variablen mit Konstanten wird dieser Prozess als Auswertung bezeichnet. Die Reihenfolge der Auswertungen spielt dabei in funktionalen Programmiersprachen keine Rolle.
+            
+        \paragraph{Ersetzungsmodell für Funktionsanwendungen}
+		\label{section:Programmierung:Auswertungsregeln:ErsetzungsmodellFunktionsanwendungen}
+			Eine Funktion wird ausgewertet, in dem jeder formale Parameter im Funktionsrumpf durch das korrespondierende ausgewertete Argument ersetzt wird.
             
         \paragraph{Self Evaluating Expressions}
-            \emph{Self Evaluating Expressions} sind Ausdrücke, die zu sich selbst ausgewertet werden. In Racket gehören Zahlen zu den \emph{Self Evaluating Expressions}. Die Auswertung eines Ausdrucks ist beendet, wenn eine \emph{Self Evaluating Expressions} erreicht wurde.
+            \emph{Self Evaluating Expressions} sind Ausdrücke, die zu sich selbst ausgewertet werden. Die Auswertung eines Ausdrucks ist beendet, wenn eine solche Expressions erreicht wurde. Beispiele sind Zahlen sowie die Wahrheitswerte $\#t$ und $\#f$.
             
         \paragraph{Funktionsaufruf}
-            Bei strikter Auswertung werden erst alle Argumente eines Funktionsaufrufs berechnet. Dieses Verfahren kommt bei Racket zum Einsatz. Diesem Verfahren steht die lazy Auswertung gegenüber, die zum Beispiel in Haskel verwendet wird, bei dem auch die Argumente erst berechnet werden, wenn sie benötigt werden.         
+            Bei strikter Auswertung werden erst alle Argumente eines Funktionsaufrufs berechnet. Dieses Verfahren kommt bei Racket zum Einsatz. Diesem Verfahren steht die lazy Auswertung gegenüber, welche zum Beispiel in Haskel verwendet wird, bei dem auch die Argumente erst berechnet werden, wenn sie benötigt werden.   
+            
+    \section{Aufschreibregeln}
+        \paragraph{Regel 1}
+            Verwende aussagekräftige Namen für Funktionen und deren Parameter.
+        
+        \paragraph{Regel 2}
+            Beschreibe den Zweck der Funktion in einem Satz mithilfe eines Kommentars in der Zeile vor der Funktionsdefinition. Der Satz sollte das Resultat der Funktion in Abhängigkeit von den Parametern beschreiben.
+            
+        \paragraph{Regel 3}
+            Zwischen Funktionsbeschreibung und Funktionskopf werden Tests hinzugefügt, die die Richtigkeit der Funktion auch in Zukunft sicherstellen. Dazu müssen Test für alle Randbereiche vorhanden sein.
+            
+        \paragraph{Regel 4}
+            Definiere für jeden Zusammenhang zwischen Größen, die sich aus der Problemstellung ergeben, eine Funktion.
+            
+        \paragraph{Regel 5}
+            Ersetze jede Konstante, deren Bedeutung sich nicht aus dem Kontext ergibt, durch einen sprechenden Variablennamen.
+            
+        \paragraph{Regel 6}
+            Anstatt den Funktionsrumpf direkt zu schreiben, schreibt man ein Skelett, das man anschließend mit Inhalt füllt. Dieses kann zum Beispiel von einer cond Verzweigung oder einem Konstruktor sein.
+            
+        \paragraph{Regel 7}
+            Vor Strukturdefinitionen wird ähnlich wie bei Funktionen eine Datendefinition der Form vorangestellt.
+            
+            \begin{lstlisting}[language=Lisp]
+                ;; Ein s ist ein Wert
+                ;; (make-s s-1 ... s-n)
+                ;; wobei s-1 ...
+            \end{lstlisting}
+            
+    \section{Datenabstraktion}
+        \subsection{Abstraktionsbarrieren}
+            % TODO Add description for Abstraktionsbarrieren
+            \begin{itemize}
+                \item \textbf{Punkt in der Sicht der Anwendungsprogramme}
+                \item ... add-point equal-point? ...
+                \item \textbf{Punkte bestehen aus x- und y-Koordinaten}
+                \item ... make-point point-x point-y
+                \item \textbf{Punkt implementiert als pairs}
+                \item ... cons car cdr ...
+                \item \textbf{Interne Implementation von pairs}
+            \end{itemize}
+        
+        \subsection{define-struct}
+            In Racket können structs mit dem Befehl
+            \begin{lstlisting}[language=Lisp]
+                (define-struct name [parameter1 parameter2])
+            \end{lstlisting}
+            erstellt werden. Der Befehl erstellt dann einen Konstruktor
+            \begin{lstlisting}[language=Lisp]
+                (make-name parameter1 parameter2)
+            \end{lstlisting}
+            sowie Selektionsfunktionen wie
+            \begin{lstlisting}[language=Lisp]
+                (name-parameter1 struct).
+            \end{lstlisting}
+            
+    \section{Nicht-numerische Daten}
+        Zu den nicht numerischen Daten gehören unter anderem
+        
+        \begin{itemize}
+            \item Zeichen
+            \item Zeichenketten
+            \item Bilder
+            \item Töne
+            \item Symbole
+            \item ...
+        \end{itemize}
+        
+        \subsection{Symbolische Ausdrücke}
+            \paragraph{Symbol}
+                Symbole sind eine einfache Möglichkeit nicht-numerische Daten zu repräsentieren. Sie sind in Racket genau wie Variablenamen aufgebaut. Zur Unterscheidung werden sie mit einem vorangestellten Hochkomma (') geschrieben. Symbole sind atomare Daten und werden zu sich selbst ausgewertet. Die einzige Operation auf symbolische Atome ist die Prüfung auf Gleichheit mittels $equal?$.
+                
+            \paragraph{Symbolische Ausdrücke}
+                Symbolische Ausdrücke oder S-Ausdrücke sind entweder 
+                \begin{itemize}
+                    \item Atome wie $27$, $'Karl$ oder $'ist$ oder
+                    \item eine Folge von S-Ausdrücken, eingeschlossen in Klammern, die Listen genannt werden..
+                \end{itemize}
+                
+    \section{Algebraische Datentypen}
+    	% TODO Add generic description what algebraic types are
+        \paragraph{Produkttypen}
+            Der Typ Punkt wird als Produkttyp bezeichnet, da die Menge aller möglichen Punkte das kartesische Produkt der einzelnen Komponenten sind:
+            
+            \begin{equation}
+                \text{Alle Punkte} = \text{Zahlen} \times \text{Zahlen}
+            \end{equation}
+            
+        \paragraph{Summentypen}
+            Der Typ Form wird als Summentyp bezeichnet, da die Menge aller Formen die Summe aus der Menge aller Rechtecke und Kreise ist.
+
+
 \end{document}
