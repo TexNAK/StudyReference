@@ -45,7 +45,7 @@
             Eine Funktion wird ausgewertet, in dem jeder formale Parameter im Funktionsrumpf durch das korrespondierende ausgewertete Argument ersetzt wird.
             
         \paragraph{Self Evaluating Expressions}
-            \emph{Self Evaluating Expressions} sind Ausdrücke, die zu sich selbst ausgewertet werden. In Racket gehören Zahlen zu den Self Evaluating Expressions. Die Auswertung eines Ausdrucks ist beendet, wenn eine Self Evaluating Expressions erreicht wurde. Beispiele für Self Evaluating Expressions sind Zahlen und die Wahrheitswerte $\#t$ und $\#f$.
+            \emph{Self Evaluating Expressions} sind Ausdrücke, die zu sich selbst ausgewertet werden. Die Auswertung eines Ausdrucks ist beendet, wenn eine solche Expressions erreicht wurde. Beispiele sind Zahlen sowie die Wahrheitswerte $\#t$ und $\#f$.
             
         \paragraph{Funktionsaufruf}
             Bei strikter Auswertung werden erst alle Argumente eines Funktionsaufrufs berechnet. Dieses Verfahren kommt bei Racket zum Einsatz. Diesem Verfahren steht die lazy Auswertung gegenüber, die zum Beispiel in Haskel verwendet wird, bei dem auch die Argumente erst berechnet werden, wenn sie benötigt werden.   
